@@ -3,3 +3,6 @@ p {
   width: 500px;
   border: 1px solid black;
 }
+div {
+  outline: 1px solid blue;
+}

@@ -1,3 +1,5 @@
+import createDesktop3 from "./js/createDesktopThree.js";
+
 const loginBtn = document.getElementById("loginBtn");
 let inputName = document.getElementById("inputName");
 
@@ -6,7 +8,7 @@ let inputName = document.getElementById("inputName");
 loginBtn.addEventListener("click", login);
 
 // Create desktop 2 by changing innerHTML:
-function createDesktop2(){
+export function createDesktop2(){
     const contentContainer = document.querySelector(".contentContainer");
     contentContainer.innerHTML=`
     <div>
@@ -18,9 +20,12 @@ function createDesktop2(){
         <button id="startGameBtn">STARTA SPELET</button>
     </div>
     `;
+
+    const startGameBtn = document.querySelector('#startGameBtn');
+    startGameBtn.addEventListener('click', createDesktop3);
 }
 
-function login() {
+export function login() {
     console.log("Hej hej!");
     let nameInLS = inputName.value;
     localStorage.setItem("userName", nameInLS);
