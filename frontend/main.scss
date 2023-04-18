@@ -57,3 +57,40 @@ body {
 p {
   color: red;
 }
+
+.desktop2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .countPlayersTitle {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .gameRulesTitle {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  .gameRulesText {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+    font-size: 1.2rem;
+  }
+
+  #startGameBtn {
+    background: $main-color2;
+    border: none;
+    color: white;
+    text-align: center;
+    height: 55px;
+    width: 180px;
+    font-size: 1rem;
+    margin-top: 20px;
+    padding: 5px;
+  }
+}
