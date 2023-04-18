@@ -1,10 +1,10 @@
 const loginBtn = document.getElementById("loginBtn");
-let input = document.getElementById("inputName");
+let inputName = document.getElementById("inputName");
 
 loginBtn.addEventListener("click", login);
 
 function login() {
     console.log("Hej hej!");
-    let value = input.value;
-    localStorage.setItem("userName", value);
+    let nameInLS = inputName.value;
+    localStorage.setItem("userName", nameInLS);
 }
