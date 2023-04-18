@@ -1,17 +1,13 @@
 const loginBtn = document.getElementById("loginBtn");
 let inputName = document.getElementById("inputName");
 
-const contentContainer = document.querySelector(".contentContainer");
 
 
 loginBtn.addEventListener("click", login);
 
-function login() {
-    console.log("Hej hej!");
-    let nameInLS = inputName.value;
-    localStorage.setItem("userName", nameInLS);
-
-    // Create desktop 2:
+// Create desktop 2:
+function createDesktop2(){
+    const contentContainer = document.querySelector(".contentContainer");
     contentContainer.innerHTML=`
     <div>
         <h2 class="countPlayersTitle">Antal spelare:<span id="countPlayers">x</span></h2>
@@ -22,5 +18,12 @@ function login() {
         <button id="startGameBtn">STARTA SPELET</button>
     </div>
     `;
+}
 
+function login() {
+    console.log("Hej hej!");
+    let nameInLS = inputName.value;
+    localStorage.setItem("userName", nameInLS);
+
+    createDesktop2();
 }
