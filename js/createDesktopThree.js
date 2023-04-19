@@ -41,14 +41,14 @@ export function getPlayer(){
     displayTime.innerText="Återstående tid";
     let countDown = document.createElement("p");
     countDown=setInterval(setTimer, 1000);
-
+    
     console.log(displayName, colourAttached);
     headerDiv.append(displayName,colourAttached, displayTime);
     displayTime.append(countDown)
 }
+let timer=document.createElement("span");
 
 function setTimer(){
-    let timer=document.createElement("p");
     timer.innerHTML= sec + ' seconds';
     console.log("tid", timer);
     sec--;
