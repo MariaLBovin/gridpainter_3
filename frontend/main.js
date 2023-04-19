@@ -25,10 +25,11 @@ export function createDesktop2(){
     startGameBtn.addEventListener('click', createDesktop3);
 }
 
-export function login() {
+export default function login() {
     console.log("Hej hej!");
     let nameInLS = inputName.value;
     localStorage.setItem("userName", nameInLS);
 
     createDesktop2();
 }
+
