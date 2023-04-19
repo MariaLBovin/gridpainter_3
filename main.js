@@ -1,4 +1,5 @@
 import createDesktop3 from "./js/createDesktopThree.js";
+import regPlayer from "./js/color.js";
 
 const loginBtn = document.getElementById("loginBtn");
 let inputName = document.getElementById("inputName");
@@ -26,6 +27,7 @@ export function createDesktop2(){
 
     const startGameBtn = document.querySelector('#startGameBtn');
     startGameBtn.addEventListener('click', createDesktop3);
+    
 }
 
 export default function login() {
@@ -35,4 +37,3 @@ export default function login() {
 
     createDesktop2();
 }
-
