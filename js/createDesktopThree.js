@@ -44,11 +44,11 @@ export function getPlayer(){
     const colourAttached = document.createElement("p");
     colourAttached.innerHTML="färg";
 
-    let displayTime = document.createElement("div");
-    displayTime.innerText="Återstående tid"
-    let countDown = document.createElement("p");
-    countDown=setInterval(setTimer, 1000);
-    
+    let displayTime = document.createElement("span");
+    displayTime.innerText="Återstående tid kvar: ";
+    let countDown=document.createElement("p");
+    countDown=(setInterval(setTimer, 1000));
+
     console.log(displayName, colourAttached);
     headerDiv.append(displayName,colourAttached, displayTime);
     displayTime.append(countDown)
@@ -56,12 +56,11 @@ export function getPlayer(){
 }
 
 function setTimer(){
-    timer.innerHTML= sec + ' seconds';
-    sec--;
-    if (sec === 0) {
-      clearInterval(setTimer);
-      alert('The time is up!');
+    if (sec < 0) {
+        clearInterval(timer);
     }
+    timer.innerHTML= sec + ' seconds remaining';
+    sec--;
     headerDiv.append(timer);
 }
 

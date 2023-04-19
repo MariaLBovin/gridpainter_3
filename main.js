@@ -27,7 +27,7 @@ export function createDesktop2(){
 
     const startGameBtn = document.querySelector('#startGameBtn');
     startGameBtn.addEventListener('click', createDesktop3);
-    
+
 }
 
 export default function login() {
