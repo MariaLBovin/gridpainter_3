@@ -10,7 +10,7 @@ export function createDesktop2(){
     const contentContainer = document.querySelector(".contentContainer");
     contentContainer.innerHTML=`
     <div class="desktop2">
-        <h2 class="countPlayersTitle">Antal spelare:<span id="countPlayers">x</span></h2>
+        <h2 class="countPlayersTitle">Antal spelare: <span id="countPlayers">x</span></h2>
         <div>
             <h3 class="gameRulesTitle">Spelets regler:</h3>
             <p class="gameRulesText">
