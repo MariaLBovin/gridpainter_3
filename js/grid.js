@@ -10,19 +10,20 @@ let grid = clickableGrid(15, 15, function(el, row, col, i) {
 
 document.body.appendChild(grid);
 
-function clickableGrid(rows, cols, callback) {
-    let i = 0;
+function clickableGrid( rows, cols, callback ){
+    let i=0;
     let grid = document.createElement('table');
-    grid.classList.add('grid');
-
-    for (let r = 0; r < rows; ++r) {
+    grid.className = 'grid';
+    for (let r=0;r<rows;++r){
         let tr = grid.appendChild(document.createElement('tr'));
-        for (let c = 0; c < cols; ++c) {
+        for (let c=0;c<cols;++c){
             let cell = tr.appendChild(document.createElement('td'));
-            cell.addEventListener('click', function() {
-                callback(cell, r, c, i);
-            });
             i++;
+            cell.addEventListener('click',(function(el,r,c,i){
+                return function(){
+                    callback(el,r,c,i);
+                }
+            })(cell,r,c,i),false);
         }
     }
     return grid;

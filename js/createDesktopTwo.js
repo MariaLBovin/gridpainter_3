@@ -1,15 +1,6 @@
-import createDesktop3 from "./js/createDesktopThree.js";
-import { renderGameBoard } from "./js/grid.js";
-import regPlayer from "./js/color.js";
+import createDesktopThree from "./createDesktopThree.js";
 
-const loginBtn = document.getElementById("loginBtn");
-let inputName = document.getElementById("inputName");
-
-
-loginBtn.addEventListener("click", login);
-
-// Create desktop 2 by changing innerHTML:
-export function createDesktop2(){
+export default function createDesktopTwo(){
     const contentContainer = document.querySelector(".contentContainer");
     contentContainer.innerHTML=`
     <div class="desktop2">
@@ -26,19 +17,8 @@ export function createDesktop2(){
         <button id="startGameBtn">STARTA SPELET</button>
     </div>
     `;
-
+    //test ();
     const startGameBtn = document.querySelector('#startGameBtn');
-    startGameBtn.addEventListener('click', createDesktop3);
+    startGameBtn.addEventListener('click', createDesktopThree);
 
-}
-
-
-export function login() {
-export default function login() {
-    console.log("Hej hej!");
-    let nameInLS = inputName.value;
-
-    localStorage.setItem("userName", nameInLS);
-
-    createDesktop2();
 }
