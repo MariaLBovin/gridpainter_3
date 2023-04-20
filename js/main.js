@@ -4,7 +4,7 @@ import regPlayer from "./color.js";
 import createDesktopTwo from "./createDesktopTwo.js";
 // import test from "./js/setUser.js";
 
-import io from '../node_modules/socket.io-client/dist/socket.io.esm.min.js';
+//import io from '../node_modules/socket.io-client/dist/socket.io.esm.min.js';
 
 const socket = io('http://localhost:3000');
 
@@ -14,7 +14,7 @@ socket.on('connect', () => {
   
 
 
-const loginBtn = document.getElementById("loginBtn");
+export const loginBtn = document.getElementById("loginBtn");
 
 
 loginBtn.addEventListener("click", createDesktopTwo);
