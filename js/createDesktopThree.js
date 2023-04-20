@@ -1,50 +1,92 @@
+import login from "../main.js";
+import regPlayer from "./color.js";
+
+const headerDiv = document.createElement('div');
+let timer=document.createElement("span");
+const nameInLS = localStorage.getItem("userName");
+const footerDiv = document.createElement("div");
+
+
+
+let sec= 100;
+
+
 export default function createDesktop3 () {
     const container = document.querySelector('.contentContainer');
     container.innerHTML = ""
     console.log(container);
 
     const mainDiv = document.createElement('div');
-    const headerDiv = document.createElement('div');
-    headerDiv.innerText = 'headerdiv';
     const playDiv = document.createElement('div');
     playDiv.innerText = 'spel-div'
     const chatDiv = document.createElement('div');
     chatDiv.innerText = 'chat-div'
-    container.appendChild(mainDiv);
-    mainDiv.append(playDiv,chatDiv);
-    playDiv.prepend(headerDiv);
-    let table = document.createElement('table');
-    table.className = 'table';
-    document.body.appendChild(table);
+    const cancelBtn = document.createElement("button");
+    cancelBtn.innerText="Avbryt"
+    const resultBtn = document.createElement("button");
+    resultBtn.innerText="Se resultat"
 
-    function renderGameBoard(){
-        let lastClicked;
-        let grid = clickableGrid(15,15,function(element,row,col,i){
-            console.log("Klick på nummer ",i);
-            element.className='clicked';
-            if (lastClicked) lastClicked.className='';
-            lastClicked = element;
-        });
-        document.body.appendChild(grid); 
-        function clickableGrid( rows, cols, callback ){
-            let i=0;        
-            let grid = document.createElement('table');        
-            grid.className = 'grid';        
-            for (let r=0;r<rows;++r){        
-                let tr = grid.appendChild(document.createElement('tr'));        
-                for (let c=0;c<cols;++c){        
-                    let cell = tr.appendChild(document.createElement('td'));        
-                    i++;        
-                    cell.addEventListener('click',(function(el,r,c,i){        
-                        return function(){        
-                            callback(el,r,c,i);        
-                        }        
-                    })(cell,r,c,i),false);        
-                }        
-            }        
-            return grid;        
-        }        
-        clickableGrid();
+    resultBtn.addEventListener("click", seeResult);
+    cancelBtn.addEventListener("click", cancel)
+    container.appendChild(mainDiv);
+    mainDiv.append(playDiv,footerDiv, chatDiv);
+    playDiv.prepend(headerDiv);
+
+    footerDiv.append(resultBtn, cancelBtn);
+
+    getPlayer();
+    notisDiv.remove();
+    
+}
+
+export function getPlayer(){ 
+    const displayName = document.createElement("h3");
+    displayName.innerHTML = "Välkommen " + nameInLS;
+    const colourAttached = document.createElement("p");
+    colourAttached.innerHTML="färg";
+
+    let displayTime = document.createElement("span");
+    displayTime.innerText="Återstående tid kvar: ";
+    let countDown=document.createElement("p");
+    countDown=(setInterval(setTimer, 1000));
+
+    console.log(displayName, colourAttached);
+    headerDiv.append(displayName,colourAttached, displayTime);
+    displayTime.append(countDown)
+    regPlayer();
+}
+
+function setTimer(){
+    if (sec < 0) {
+        clearInterval(timer);
     }
-renderGameBoard();
+    timer.innerHTML= sec + ' seconds remaining';
+    sec--;
+    headerDiv.append(timer);
+}
+
+function seeResult(){
+    //createDesktop4();
+}
+
+let notisDiv = document.createElement("div");
+function cancel(){
+
+    let yesBtn = document.createElement("button");
+    let noBtn = document.createElement("button");
+
+    notisDiv.innerHTML="Är du säker på att du vill avsluta spelet?"
+    yesBtn.innerText="Ja"
+    noBtn.innerText="Nej";
+    footerDiv.append(notisDiv);
+    notisDiv.append(yesBtn, noBtn);
+
+    yesBtn.addEventListener("click", ()=>{
+    login();
+    footerDiv.innerHTML="";
+    headerDiv.innerHTML="";})
+
+    noBtn.addEventListener("click", ()=>{
+        notisDiv.innerHTML="";
+    })
 }
