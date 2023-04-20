@@ -1,7 +1,8 @@
 import createDesktop3 from "./js/createDesktopThree.js";
-
+import { renderGameBoard } from "./js/grid.js";
 const loginBtn = document.getElementById("loginBtn");
 let inputName = document.getElementById("inputName");
+
 
 loginBtn.addEventListener("click", login);
 
@@ -22,6 +23,8 @@ export function createDesktop2(){
     const startGameBtn = document.querySelector('#startGameBtn');
     startGameBtn.addEventListener('click', createDesktop3);
 }
+
+
 
 export function login() {
     console.log("Hej hej!");
