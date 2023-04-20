@@ -1,20 +1,18 @@
-import login from "../main.js";
+//import { login } from "../main.js";
 import regPlayer from "./color.js";
+import { renderGameBoard } from "./grid.js";
+//import getPlayer from "./getPlayer.js";
+//import cancel from "./gameButtons.js";
+//import { notisDiv } from "./gameButtons.js";
 
-const headerDiv = document.createElement('div');
-let timer=document.createElement("span");
-const nameInLS = localStorage.getItem("userName");
-const footerDiv = document.createElement("div");
-
-
-
-let sec= 100;
+ export const headerDiv = document.createElement('div');
+ export const footerDiv = document.createElement("div");
 
 
-export default function createDesktop3 () {
+export default function createDesktopThree () {
     const container = document.querySelector('.contentContainer');
     container.innerHTML = ""
-    console.log(container);
+    console.log(container); 
 
     const mainDiv = document.createElement('div');
     const playDiv = document.createElement('div');
@@ -26,6 +24,7 @@ export default function createDesktop3 () {
     const resultBtn = document.createElement("button");
     resultBtn.innerText="Se resultat"
 
+
     resultBtn.addEventListener("click", seeResult);
     cancelBtn.addEventListener("click", cancel)
     container.appendChild(mainDiv);
@@ -35,43 +34,60 @@ export default function createDesktop3 () {
     footerDiv.append(resultBtn, cancelBtn);
 
     getPlayer();
+    renderGameBoard();
     notisDiv.remove();
+    //cancel();
     
 }
 
-export function getPlayer(){ 
-    const displayName = document.createElement("h3");
-    displayName.innerHTML = "Välkommen " + nameInLS;
-    const colourAttached = document.createElement("p");
-    colourAttached.innerHTML="färg";
-
+const startingMinutes = 5;
+let time = startingMinutes * 60;
+let countDown = document.createElement("span");
+let myInterval = setInterval(setTimer, 1000)
+function setTimer(){
     let displayTime = document.createElement("span");
     displayTime.innerText="Återstående tid kvar: ";
-    let countDown=document.createElement("p");
-    countDown=(setInterval(setTimer, 1000));
 
-    console.log(displayName, colourAttached);
-    headerDiv.append(displayName,colourAttached, displayTime);
-    displayTime.append(countDown)
-    regPlayer();
-}
 
-function setTimer(){
-    if (sec < 0) {
-        clearInterval(timer);
-    }
-    timer.innerHTML= sec + ' seconds remaining';
-    sec--;
-    headerDiv.append(timer);
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    seconds = seconds < 10? "0" + seconds : seconds;
+    countDown.innerHTML = `${minutes}:${seconds}`;
+    time --;
+    time = time < -1 ? -1 : time;
+    
+if (time === -1) {
+    clearInterval(myInterval);
+    countDown.innerHTML = "STOP";
+} 
+displayTime.append(countDown);
+//headerDiv.append(displayTime);
 }
 
 function seeResult(){
     //createDesktop4();
 }
 
-let notisDiv = document.createElement("div");
-function cancel(){
+//export default 
+function getPlayer(){ 
+    const inputName = document.getElementById("inputName");
+    const displayName = document.createElement("h3");
+    displayName.innerHTML = "Välkommen " + inputName;
+    const colourAttached = document.createElement("p");
+    colourAttached.innerHTML="färg";
 
+    console.log(displayName, colourAttached);
+    headerDiv.append(displayName,colourAttached);
+    //regPlayer();
+}
+
+
+
+let notisDiv = document.createElement("div");
+
+//export default 
+function cancel(){
     let yesBtn = document.createElement("button");
     let noBtn = document.createElement("button");
 

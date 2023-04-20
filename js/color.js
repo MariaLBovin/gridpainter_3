@@ -1,5 +1,5 @@
 
-let colors = ["red", "gren", "blue", "yellow"];
+let colors = ["red", "green", "blue", "yellow"];
 let nameInLS = [];
 
 function randomizeColor(){
