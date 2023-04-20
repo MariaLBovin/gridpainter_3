@@ -31,6 +31,7 @@ export default function createDesktop3 () {
     container.appendChild(mainDiv);
     mainDiv.append(playDiv,footerDiv, chatDiv);
     playDiv.prepend(headerDiv);
+
     footerDiv.append(resultBtn, cancelBtn);
 
     getPlayer();

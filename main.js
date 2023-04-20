@@ -1,8 +1,10 @@
 import createDesktop3 from "./js/createDesktopThree.js";
+import { renderGameBoard } from "./js/grid.js";
 import regPlayer from "./js/color.js";
 
 const loginBtn = document.getElementById("loginBtn");
 let inputName = document.getElementById("inputName");
+
 
 loginBtn.addEventListener("click", login);
 
@@ -30,6 +32,8 @@ export function createDesktop2(){
 
 }
 
+
+export function login() {
 export default function login() {
     console.log("Hej hej!");
     let nameInLS = inputName.value;
