@@ -33,6 +33,7 @@ export function createDesktop2(){
 export default function login() {
     console.log("Hej hej!");
     let nameInLS = inputName.value;
+
     localStorage.setItem("userName", nameInLS);
 
     createDesktop2();
