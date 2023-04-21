@@ -1,3 +1,5 @@
+@import '_chat';
+
 $main-color1: #adb7b2;
 $main-color2: #1be7fa;
 $main-color3: #FCE38A;
@@ -114,4 +116,15 @@ p {
     padding: 5px;
   }
 }
+
+.pagethree-wrapper{
+  display: flex;
+}
+
+.play-div {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
 

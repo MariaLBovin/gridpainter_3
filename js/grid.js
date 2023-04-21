@@ -2,13 +2,16 @@ export function renderGameBoard(){
 let lastClicked;
 let grid = clickableGrid(15, 15, function(el, row, col, i) {
     console.log("Klick på nummer ", i);
-
     el.classList.add('clicked');
     if (lastClicked) lastClicked.classList.remove('clicked');
     lastClicked = el;
 });
 
-document.body.appendChild(grid);
+// Get the playDiv element by its class name
+const playDiv = document.querySelector('.play-div');
+
+ // Append the grid to the playDiv element
+ playDiv.appendChild(grid);
 
 function clickableGrid( rows, cols, callback ){
     let i=0;
@@ -26,6 +29,7 @@ function clickableGrid( rows, cols, callback ){
             })(cell,r,c,i),false);
         }
     }
+    
     return grid;
 }
 

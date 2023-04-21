@@ -14,5 +14,5 @@ export default function getPlayer(){
 
     socket.on('getUser', (data) => {
         console.log(data);
-    })
+    });
 }
