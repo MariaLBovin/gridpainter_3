@@ -1,8 +1,9 @@
 import login from "../main.js";
 import regPlayer from "./color.js";
+import createChat from "./createChat.js";
 
 const headerDiv = document.createElement('div');
-let timer=document.createElement("span");
+const timer=document.createElement("span");
 const nameInLS = localStorage.getItem("userName");
 const footerDiv = document.createElement("div");
 
@@ -13,27 +14,32 @@ let sec= 100;
 
 export default function createDesktop3 () {
     const container = document.querySelector('.contentContainer');
-    container.innerHTML = ""
+    container.innerHTML = "";
     console.log(container);
 
     const mainDiv = document.createElement('div');
+    mainDiv.classList.add("desktop-three-div");
     const playDiv = document.createElement('div');
-    playDiv.innerText = 'spel-div'
+    playDiv.classList.add('play-div');
     const chatDiv = document.createElement('div');
-    chatDiv.innerText = 'chat-div'
+    chatDiv.classList.add('div-chat');
+    const gameDiv = document.createElement('div');
+    gameDiv.classList.add('game-div');
     const cancelBtn = document.createElement("button");
-    cancelBtn.innerText="Avbryt"
+    cancelBtn.innerText="Avbryt";
     const resultBtn = document.createElement("button");
-    resultBtn.innerText="Se resultat"
+    resultBtn.innerText="Se resultat";
 
     resultBtn.addEventListener("click", seeResult);
-    cancelBtn.addEventListener("click", cancel)
+    cancelBtn.addEventListener("click", cancel);
+    
     container.appendChild(mainDiv);
-    mainDiv.append(playDiv,footerDiv, chatDiv);
-    playDiv.prepend(headerDiv);
+    mainDiv.append(playDiv, chatDiv);
+    playDiv.append(headerDiv, gameDiv, footerDiv);
     footerDiv.append(resultBtn, cancelBtn);
 
     getPlayer();
+    createChat();
     notisDiv.remove();
     
 }
@@ -69,6 +75,7 @@ function seeResult(){
 }
 
 let notisDiv = document.createElement("div");
+
 function cancel(){
 
     let yesBtn = document.createElement("button");

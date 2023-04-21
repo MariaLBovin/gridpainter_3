@@ -1,8 +1,8 @@
 
-let colors = ["red", "gren", "blue", "yellow"];
-let nameInLS = [];
+const colors = ["red", "gren", "blue", "yellow"];
+const nameInLS = [];
 
-function randomizeColor(){
+function randomizeColor() {
     const i = Math.floor(Math.random() * colors.length);
     return {color:colors[i]};
 }
