@@ -1,6 +1,14 @@
 import createDesktopThree from "./createDesktopThree.js";
+import { socket } from "./main.js";
+const users = [];
 
 export default function createDesktopTwo(){
+    socket.on('getUser', (data) => {
+        const user = {userName: data, color: "red"}
+        users.push(user);
+        console.log(users);
+    });
+
     const contentContainer = document.querySelector(".contentContainer");
     contentContainer.innerHTML=`
     <div class="desktop2">
