@@ -1,5 +1,4 @@
 
-let colors = ["red", "green", "blue", "yellow"];
 let nameInLS = [];
 
 function randomizeColor(){
@@ -17,7 +16,10 @@ export default function regPlayer(userName, color) {
     console.log(color);
   }
 
-
+socket.on('joinResponse', ({ color }) => {
+    console.log(`Joined with color ${color}`);
+  });
+  
 
 
 
