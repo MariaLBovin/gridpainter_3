@@ -1,91 +1,60 @@
-import login from "../main.js";
+//import { login } from "../main.js";
 import regPlayer from "./color.js";
+import { renderGameBoard } from "./grid.js";
+import getPlayer from "./getPlayer.js";
+import cancel from "./gameButtons.js";
+import { notisDiv } from "./gameButtons.js";
+import { countDown } from "./setTimer.js";
 
-const headerDiv = document.createElement('div');
-let timer=document.createElement("span");
-const nameInLS = localStorage.getItem("userName");
-const footerDiv = document.createElement("div");
+ export const headerDiv = document.createElement('div');
+ export const footerDiv = document.createElement("div");
+ export const displayName = document.createElement("h3");
+ export const colourAttached = document.createElement("p");
 
 
-
-let sec= 100;
-
-
-export default function createDesktop3 () {
+export default function createDesktopThree () {
     const container = document.querySelector('.contentContainer');
     container.innerHTML = ""
-    console.log(container);
+    console.log(container); 
 
     const mainDiv = document.createElement('div');
     const playDiv = document.createElement('div');
-    playDiv.innerText = 'spel-div'
     const chatDiv = document.createElement('div');
-    chatDiv.innerText = 'chat-div'
     const cancelBtn = document.createElement("button");
     cancelBtn.innerText="Avbryt"
     const resultBtn = document.createElement("button");
     resultBtn.innerText="Se resultat"
 
+    colourAttached.innerHTML="färg";
+    let displayTime = document.createElement("span");
+    displayTime.innerText="Återstående tid kvar: ";
+
     resultBtn.addEventListener("click", seeResult);
     cancelBtn.addEventListener("click", cancel)
+
     container.appendChild(mainDiv);
-    mainDiv.append(playDiv,footerDiv, chatDiv);
+    mainDiv.append(playDiv, footerDiv, chatDiv);
     playDiv.prepend(headerDiv);
+    headerDiv.append(displayName, colourAttached, displayTime);
+    playDiv.append(displayTime);
+    displayTime.append(countDown);
+
+
     footerDiv.append(resultBtn, cancelBtn);
 
     getPlayer();
+    renderGameBoard();
     notisDiv.remove();
+    //cancel();
     
 }
 
-export function getPlayer(){ 
-    const displayName = document.createElement("h3");
-    displayName.innerHTML = "Välkommen " + nameInLS;
-    const colourAttached = document.createElement("p");
-    colourAttached.innerHTML="färg";
 
-    let displayTime = document.createElement("span");
-    displayTime.innerText="Återstående tid kvar: ";
-    let countDown=document.createElement("p");
-    countDown=(setInterval(setTimer, 1000));
-
-    console.log(displayName, colourAttached);
-    headerDiv.append(displayName,colourAttached, displayTime);
-    displayTime.append(countDown)
-    regPlayer();
-}
-
-function setTimer(){
-    if (sec < 0) {
-        clearInterval(timer);
-    }
-    timer.innerHTML= sec + ' seconds remaining';
-    sec--;
-    headerDiv.append(timer);
-}
 
 function seeResult(){
     //createDesktop4();
 }
 
-let notisDiv = document.createElement("div");
-function cancel(){
 
-    let yesBtn = document.createElement("button");
-    let noBtn = document.createElement("button");
 
-    notisDiv.innerHTML="Är du säker på att du vill avsluta spelet?"
-    yesBtn.innerText="Ja"
-    noBtn.innerText="Nej";
-    footerDiv.append(notisDiv);
-    notisDiv.append(yesBtn, noBtn);
 
-    yesBtn.addEventListener("click", ()=>{
-    login();
-    footerDiv.innerHTML="";
-    headerDiv.innerHTML="";})
-
-    noBtn.addEventListener("click", ()=>{
-        notisDiv.innerHTML="";
-    })
-}

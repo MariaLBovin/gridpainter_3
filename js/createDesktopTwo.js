@@ -1,13 +1,14 @@
-import createDesktop3 from "./js/createDesktopThree.js";
-import regPlayer from "./js/color.js";
+import createDesktopThree from "./createDesktopThree.js";
+import { socket } from "./main.js";
+const users = [];
 
-const loginBtn = document.getElementById("loginBtn");
-let inputName = document.getElementById("inputName");
+export default function createDesktopTwo(){
+    socket.on('getUser', (data) => {
+        const user = {userName: data, color: "red"}
+        users.push(user);
+        console.log(users);
+    });
 
-loginBtn.addEventListener("click", login);
-
-// Create desktop 2 by changing innerHTML:
-export function createDesktop2(){
     const contentContainer = document.querySelector(".contentContainer");
     contentContainer.innerHTML=`
     <div class="desktop2">
@@ -24,17 +25,8 @@ export function createDesktop2(){
         <button id="startGameBtn">STARTA SPELET</button>
     </div>
     `;
-
+    //test ();
     const startGameBtn = document.querySelector('#startGameBtn');
-    startGameBtn.addEventListener('click', createDesktop3);
+    startGameBtn.addEventListener('click', createDesktopThree);
 
-}
-
-export default function login() {
-    console.log("Hej hej!");
-    let nameInLS = inputName.value;
-
-    localStorage.setItem("userName", nameInLS);
-
-    createDesktop2();
 }
