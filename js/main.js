@@ -2,6 +2,7 @@ import createDesktop3 from "./createDesktopThree.js";
 import { renderGameBoard } from "./grid.js";
 import regPlayer from "./color.js";
 import createDesktopTwo from "./createDesktopTwo.js";
+import { outputMessage } from "./chat.js";
 // import test from "./js/setUser.js";
 
 //import io from '../node_modules/socket.io-client/dist/socket.io.esm.min.js';
@@ -14,6 +15,12 @@ export const socket = io('http://localhost:3000');
 socket.on('connect', () => {
     console.log(`Connected to Socket.IO server with id: ${socket.id}`);
 });
+
+
+// socket.on('message', message => {
+//     console.log(message);
+//     outputMessage(message);
+// });
 
 socket.emit('userEnter', 1, "hej");
 

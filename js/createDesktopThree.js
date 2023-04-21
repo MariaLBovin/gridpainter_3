@@ -5,6 +5,10 @@ import getPlayer from "./getPlayer.js";
 import cancel from "./gameButtons.js";
 import { notisDiv } from "./gameButtons.js";
 import { countDown } from "./setTimer.js";
+import { chatMsg } from "./chat.js";
+import { outputMessage } from "./chat.js";
+
+const socket = io('http://localhost:3000');
 
 
  export const headerDiv = document.createElement('div');
@@ -43,11 +47,6 @@ export default function createDesktopThree () {
       </div>
       <div class="chat-messages">
 					<div class="message">
-						<p class="meta">Brad <span>9:12pm</span></p>
-						<p class="text">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-							repudiandae.
-						</p>
 					</div>
 					<div class="message">
 						<p class="meta">Mary <span>9:15pm</span></p>
@@ -101,9 +100,9 @@ export default function createDesktopThree () {
     // renderGameBoard();
     notisDiv.remove();
     //cancel();
+
     
 }
-
 
 
 function seeResult(){

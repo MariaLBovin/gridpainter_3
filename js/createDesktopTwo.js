@@ -1,5 +1,8 @@
 import createDesktopThree from "./createDesktopThree.js";
-import { socket } from "./main.js";
+import { chatMsg, outputMessage } from "./chat.js";
+
+export const socket = io('http://localhost:3000');
+
 const users = [];
 
 export default function createDesktopTwo(){
@@ -27,6 +30,21 @@ export default function createDesktopTwo(){
     `;
     //test ();
     const startGameBtn = document.querySelector('#startGameBtn');
-    startGameBtn.addEventListener('click', createDesktopThree);
+    startGameBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        createDesktopThree(); 
+        chatMsg();
+
+        const chatMessages = document.querySelector('.chat-messages');
+
+        socket.on('message', message => {
+            outputMessage(message);
+
+            // scroll down
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          });
+
+    });
 
 }
