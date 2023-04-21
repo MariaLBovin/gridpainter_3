@@ -1,8 +1,14 @@
-// const socket = io('http://localhost:3000');
+import createDesktopTwo from "./createDesktopTwo.js";
+const users = [];
 
-// export default function test() {
-//     socket.on("connection", () => {
-//           console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-//         });
-// }
-// test ();
+export default function setUser (id, username, color) {
+    const user ={id, username, color};
+
+    users.push(user);
+
+    createDesktopTwo();
+    
+    return user;
+
+    
+}
