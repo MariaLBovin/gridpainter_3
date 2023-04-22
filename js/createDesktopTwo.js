@@ -1,5 +1,5 @@
 import createDesktopThree from "./createDesktopThree.js";
-import { chatMsg, outputMessage } from "./chat.js";
+import { chatMsg, printChatMessage } from "./chat.js";
 
 export const socket = io('http://localhost:3000');
 
@@ -39,7 +39,7 @@ export default function createDesktopTwo(){
         const chatMessages = document.querySelector('.chat-messages');
 
         socket.on('message', message => {
-            outputMessage(message);
+            printChatMessage(message);
 
             // scroll down
             chatMessages.scrollTop = chatMessages.scrollHeight;

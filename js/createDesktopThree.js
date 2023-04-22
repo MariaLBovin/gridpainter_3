@@ -6,10 +6,9 @@ import cancel from "./gameButtons.js";
 import { notisDiv } from "./gameButtons.js";
 import { countDown } from "./setTimer.js";
 import { chatMsg } from "./chat.js";
-import { outputMessage } from "./chat.js";
+import { printChatMessage } from "./chat.js";
 
 const socket = io('http://localhost:3000');
-
 
  export const headerDiv = document.createElement('div');
  export const footerDiv = document.createElement("div");
@@ -32,11 +31,11 @@ export default function createDesktopThree () {
     
     chatDiv.innerHTML = ` <div class="chat-container">
     <header class="chat-header">
-      <h1><i class="fas fa-smile"></i> ChatCord</h1>
+      <h1>Spelchat</h1>
     </header>
     <main class="chat-main">
       <div class="chat-sidebar">
-        <h3><i class="fas fa-users"></i>Spelare</h3>
+        <h3>Spelare</h3>
         <ul id="users">
           <li>Brad</li>
           <li>John</li>
@@ -46,15 +45,6 @@ export default function createDesktopThree () {
         </ul>
       </div>
       <div class="chat-messages">
-					<div class="message">
-					</div>
-					<div class="message">
-						<p class="meta">Mary <span>9:15pm</span></p>
-						<p class="text">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-							repudiandae.
-						</p>
-					</div>
       </div>
     </main>
     <div class="chat-form-container">
@@ -100,7 +90,6 @@ export default function createDesktopThree () {
     // renderGameBoard();
     notisDiv.remove();
     //cancel();
-
     
 }
 
