@@ -1,7 +1,7 @@
 import createDesktopThree from "./createDesktopThree.js";
 
 export let countDown = document.createElement("span");
-let myInterval = setInterval(setTimer, 1000);
+setInterval(setTimer, 1000);
 const startingMinutes = 5;
 let time = startingMinutes * 60;
 
@@ -18,5 +18,5 @@ export default function setTimer(){
 if (time === -1) {
     clearInterval(myInterval);
     countDown.innerHTML = "STOP";
-} 
+} return;
 }

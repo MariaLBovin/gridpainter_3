@@ -1,6 +1,7 @@
 import {footerDiv, headerDiv} from "./createDesktopThree.js";
 import createDesktopTwo from "./createDesktopTwo.js";
 import { renderGameBoard } from "./grid.js";
+import setTimer from "./setTimer.js";
 
 export let notisDiv = document.createElement("div");
 
