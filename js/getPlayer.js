@@ -1,18 +1,13 @@
-import createDesktopThree from "./createDesktopThree.js";
-import {displayName, colourAttached} from "./createDesktopThree.js";
+
+//import createDesktopTwo from "./createDesktopTwo.js";
 import { socket } from "./main.js";
+//import { users} from './createDesktopTwo.js';
+ 
+export default function updateUsers () {
 
-
-const users = [];
-
-export default function getPlayer(){ 
-    // const inputName = document.getElementById("inputName");
-    // displayName.innerHTML = "Välkommen " + inputName;
-    // console.log(displayName, colourAttached);
-    //headerDiv.append(displayName,colourAttached);
-    //regPlayer();
-
-    socket.on('getUser', (data) => {
+    socket.on('updateUsers', function (data) {
         console.log(data);
-    })
+
+        //createDesktopTwo(data);
+    });
 }
