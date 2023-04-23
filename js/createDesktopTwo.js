@@ -1,33 +1,8 @@
 import createDesktopThree from "./createDesktopThree.js";
-
-import { chatMsg, printChatMessage } from "./chat.js";
-
-export const socket = io('http://localhost:3000');
-
-const users = [];
+import { socket } from "./main.js";
 
 export default function createDesktopTwo(){
     const contentContainer = document.querySelector(".contentContainer");
-
-    startGameBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        createDesktopThree(); 
-        chatMsg();
-
-        const chatMessages = document.querySelector('.chat-messages');
-
-        socket.on('message', message => {
-            printChatMessage(message);
-
-            // scroll down
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-          });
-
-    });
-
-}
-
     contentContainer.innerHTML = '';
 
     function updateContent(data) {
@@ -54,13 +29,19 @@ export default function createDesktopTwo(){
 
         console.log(data);
 
-        startGameBtn.addEventListener('click', createDesktopThree);
+        startGameBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            socket.emit('joinGame', ({ data }));
+
+            console.log(data);
+
+            createDesktopThree(data); 
+        });
     }
 
     function handleUpdateUsers(data) {
         contentContainer.innerHTML = '';
-
-        socket.on('updateUsers', handleUpdateUsers);
         updateContent(data);
     }
 
@@ -68,8 +49,6 @@ export default function createDesktopTwo(){
 }
 
 
-// import createDesktopThree from "./createDesktopThree.js";
-// import { socket } from "./main.js";
 // //export const users = [];
 
 // export default function createDesktopTwo(){
