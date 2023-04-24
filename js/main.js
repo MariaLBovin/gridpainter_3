@@ -1,38 +1,28 @@
 import createDesktopTwo from "./createDesktopTwo.js";
 //import updateUsers from "./getPlayer.js";
-
-
-const userName = document.getElementById('inputName');
-
 export const socket = io('http://localhost:3000');
 
+const loginBtn = document.getElementById("loginBtn");
+const userName = document.getElementById('inputName');
 
-socket.on('connect', () => {
-    console.log(`Connected to Socket.IO server with id: ${socket.id}`);
-});
+export default function init () {
+    
+    socket.on('connect', () => {
+        console.log(`Connected to Socket.IO server with id: ${socket.id}`);
+    });
+    
+    socket.emit('userEnter', 1, "hej");
 
-socket.emit('userEnter', 1, "hej");
+    loginBtn.addEventListener("click", ()  => {
+        socket.emit('getUser', userName.value);
+            //updateUsers ();
+        createDesktopTwo();
+      
+    });
+    
+}
 
-// socket.on('getUser', (data) => {
-//     console.log(data);
-// });
-
-
-  
-
-
-
-export const loginBtn = document.getElementById("loginBtn");
-
-
-loginBtn.addEventListener("click", ()  => {
-    socket.emit('getUser', userName.value);
-        //updateUsers ();
-    createDesktopTwo();
-  
-});
-
-
+init ();
 
 
 // export function login() {
