@@ -1,11 +1,10 @@
 import createDesktopTwo from "./createDesktopTwo.js";
 //import updateUsers from "./getPlayer.js";
 export const socket = io('http://localhost:3000');
-
 const loginBtn = document.getElementById("loginBtn");
 const userName = document.getElementById('inputName');
 
-export default function init () {
+export default function init  () {
     
     socket.on('connect', () => {
         console.log(`Connected to Socket.IO server with id: ${socket.id}`);
@@ -19,7 +18,6 @@ export default function init () {
         createDesktopTwo();
       
     });
-    
 }
 
 init ();
