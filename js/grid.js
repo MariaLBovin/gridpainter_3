@@ -8,10 +8,16 @@ export function renderGameBoard(gridDiv, currentUser){
 //let lastClicked;
 socket.on('paint', (facit) => {
     console.log(facit);
+        facit.forEach(item => {
+            //console.log(item.color);
+            const color = item.color;
+            const position = item.position;
+            const cell = document.querySelector(`#cell-${position}`);
+            console.log(cell);
+            cell.style.backgroundColor = color;
+        });
 });
-// socket.on('paint', (facit) {
-//     clickableGrid}
-//     );
+
 
 //console.log(currentUser);
 let selectedColor = currentUser.color;
@@ -28,7 +34,7 @@ const grid = clickableGrid(15, 15, function(el, row, col, i) {
     // if (lastClicked) lastClicked.classList.remove('clicked');
     // lastClicked = el;
     el.style.backgroundColor = selectedColor;
-    facit.push(i, selectedColor);
+    facit.push({position:i, color:selectedColor});
     //console.log(facit);
     
     //socket.emit('paint', facit);
@@ -48,6 +54,8 @@ function clickableGrid( rows, cols, callback ){
         for (let c=0;c<cols;++c){
             const cell = tr.appendChild(document.createElement('td'));
             i++;
+            cell.id = `cell-${i}`;
+            //console.log(cell.id);
             cell.addEventListener('click',(function(el,r,c,i){
 
                 return function(){
