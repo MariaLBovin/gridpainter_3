@@ -1,3 +1,5 @@
+@import '_chat';
+
 $main-color1: #27f591;
 $main-color2: #1be7fa;
 $main-color3: #FCE38A;
@@ -94,12 +96,4 @@ p {
     padding: 5px;
   }
 }
-.desktop-three-div {
-  display: flex;
-}
-.play-div {
-  width: 60%;
-}
-.div-chat {
-  width: 40%;
-}
+
