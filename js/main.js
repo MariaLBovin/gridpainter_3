@@ -23,13 +23,3 @@ export default function init () {
 }
 
 init ();
-
-
-// export function login() {
-//     console.log("Hej hej!");
-//     let nameInLS = inputName.value;
-
-//     localStorage.setItem("userName", nameInLS);
-
-//     createDesktop2();
-// }
