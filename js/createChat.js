@@ -1,16 +1,19 @@
 export const socket = io('http://localhost:3000');
 
-export function chatMsg(data) {
-    console.log(data);
+export function chatMsg(currentUser) {
+    console.log(currentUser);
     const chatForm = document.getElementById('chat-form');
+
+    let username = currentUser.userName;
+    console.log(username);
 
     chatForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const msg = e.target.elements.msg.value;
         
-        socket.emit('chatMessage', msg);
-        console.log(msg);
+        socket.emit('chatMessage', msg, username);
+        console.log(msg, username);
 
         e.target.elements.msg.value = '';
         e.target.elements.msg.focus();

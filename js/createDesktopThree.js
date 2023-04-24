@@ -5,6 +5,7 @@ import { renderGameBoard } from "./grid.js";
 //import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
+import { chatMsg, printUsers } from "./createChat.js";
 
 
 export default function createDesktopThree (data) {
@@ -101,16 +102,21 @@ export default function createDesktopThree (data) {
 
         renderGameBoard(gridDiv);
 
-    }
-    const chatMessages = document.querySelector('.chat-messages');
+        const chatMessages = document.querySelector('.chat-messages');
             
-    socket.on('message', message => {
-        printChatMessage(message);
-        console.log(message);
+      socket.on('message', message => {
+          printChatMessage(message);
+          console.log(message);
 
-        // scroll down
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    });
+          // scroll down
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
+
+      chatMsg(currentUser);
+      printUsers(data);
+
+    }
+  
 }
 
 
