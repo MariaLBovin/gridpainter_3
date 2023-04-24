@@ -2,7 +2,7 @@
 import { renderGameBoard } from "./grid.js";
 //import cancel from "./gameButtons.js";
 //import { notisDiv } from "./gameButtons.js";
-//import { countDown } from "./setTimer.js";
+import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 
@@ -92,12 +92,8 @@ export default function createDesktopThree (data) {
         mainDiv.append(playDiv, chatDiv);
         playDiv.append(headerDiv, gridDiv, footerDiv);
         headerDiv.append(displayName, colourAttached, displayTime);
-        //displayTime.append(countDown);
+        displayTime.append(countDown);
         footerDiv.append(resultBtn, cancelBtn);
-
-        // socket.on('getUser', (user) => {
-        //     console.log(user);
-        //   });
 
         const chatMessages = document.querySelector('.chat-messages');
             

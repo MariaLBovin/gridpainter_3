@@ -1,21 +1,19 @@
 import { socket } from "./main.js";
 const facit = [];
 
-
 export function renderGameBoard(gridDiv, currentUser){
 
 socket.on('paint', (facit) => {
-    console.log(facit);
+    //console.log(facit);
         facit.forEach(item => {
             //console.log(item.color);
             const color = item.color;
             const position = item.position;
             const cell = document.querySelector(`#cell-${position}`);
-            console.log(cell);
+            //console.log(cell);
             cell.style.backgroundColor = color;
         });
 });
-
 
 const selectedColor = currentUser.color;
 
