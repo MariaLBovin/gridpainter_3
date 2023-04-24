@@ -38,6 +38,11 @@ export default function createDesktopTwo() {
     updateContent(data);
   }
 
+//   socket.on('userJoined', (users) => {
+//     socket.emit('usersJoined');
+//     console.log(users);
+// });
+
   socket.on("updateUsers", handleUpdateUsers);
 
   socket.on("fullGame", () => {
