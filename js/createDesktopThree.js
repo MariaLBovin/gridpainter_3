@@ -17,10 +17,10 @@ export default function createDesktopThree (data) {
         //console.log(data);
 
         const currentUser = data.find(data => data.id === socket.id);
-        console.log(currentUser);
+        //console.log(currentUser);
         const container = document.querySelector('.contentContainer');
         container.innerHTML = "";
-        console.log(container);
+        //console.log(container);
     
         const mainDiv = document.createElement('div');
         mainDiv.classList.add('main-div');
@@ -109,7 +109,7 @@ export default function createDesktopThree (data) {
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             });
 
-        renderGameBoard(gridDiv);
+        renderGameBoard(gridDiv, currentUser);
 
     }
 
