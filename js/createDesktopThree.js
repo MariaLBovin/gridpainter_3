@@ -99,20 +99,18 @@ export default function createDesktopThree (data) {
         //     console.log(user);
         //   });
 
-        const chatMessages = document.querySelector('.chat-messages');
-            
-            socket.on('message', message => {
-                printChatMessage(message);
-                console.log(message);
-
-                // scroll down
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            });
-
         renderGameBoard(gridDiv);
 
     }
+    const chatMessages = document.querySelector('.chat-messages');
+            
+    socket.on('message', message => {
+        printChatMessage(message);
+        console.log(message);
 
+        // scroll down
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
 }
 
 

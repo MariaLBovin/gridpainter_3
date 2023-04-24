@@ -28,7 +28,12 @@ export default function createDesktopTwo() {
     contentContainer.appendChild(containerDiv);
     containerDiv.append(playerHeader, h3, textArticle, p, startGameBtn);
 
-    startGameBtn.addEventListener("click", () => {
+    startGameBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        socket.emit('joinGame', ({ data }));
+
+        console.log(data);
         createDesktopThree(data);
     } );
   }
@@ -37,11 +42,6 @@ export default function createDesktopTwo() {
     contentContainer.innerHTML = "";
     updateContent(data);
   }
-
-//   socket.on('userJoined', (users) => {
-//     socket.emit('usersJoined');
-//     console.log(users);
-// });
 
   socket.on("updateUsers", handleUpdateUsers);
 

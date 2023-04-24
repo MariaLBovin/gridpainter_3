@@ -9,8 +9,8 @@ export function chatMsg(data) {
 
         const msg = e.target.elements.msg.value;
         
-        socket.emit('chatMessage', msg, data);
-        console.log(data);
+        socket.emit('chatMessage', msg);
+        console.log(msg);
 
         e.target.elements.msg.value = '';
         e.target.elements.msg.focus();
