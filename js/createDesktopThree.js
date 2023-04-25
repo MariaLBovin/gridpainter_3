@@ -1,12 +1,11 @@
 
-//import regPlayer from "./color.js";
 import { renderGameBoard } from "./grid.js";
-//import getPlayer from "./getPlayer.js";
 //import cancel from "./gameButtons.js";
 //import { notisDiv } from "./gameButtons.js";
 //import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
-
+import { printChatMessage } from "./createChat.js";
+import { chatMsg } from "./createChat.js";
 
 
 export default function createDesktopThree (data) {
@@ -16,7 +15,8 @@ export default function createDesktopThree (data) {
         
     function createGameHtml(data) {
         
-            console.log(data);
+        //console.log(data);
+
         const currentUser = data.find(data => data.id === socket.id);
         console.log(currentUser);
         const container = document.querySelector('.contentContainer');
@@ -31,6 +31,32 @@ export default function createDesktopThree (data) {
     
         const chatDiv = document.createElement('div');
         chatDiv.classList.add('chat-div');
+        chatDiv.innerHTML = ` <div class="chat-container">
+    <header class="chat-header">
+      <h1>Spelchat</h1>
+    </header>
+    <main class="chat-main">
+      <div class="chat-sidebar">
+        <h3>Spelare</h3>
+        <ul id="users">
+        </ul>
+      </div>
+      <div class="chat-messages">
+      </div>
+    </main>
+    <div class="chat-form-container">
+      <form id="chat-form">
+        <input
+          id="msg"
+          type="text"
+          placeholder="Skriv ditt meddelande..."
+          required
+          autocomplete="off"
+        />
+        <button class="btn"></i>Skicka</button>
+      </form>
+    </div>
+  </div>`;
     
         const headerDiv = document.createElement('div');
         headerDiv.classList.add('header-div');
@@ -76,8 +102,21 @@ export default function createDesktopThree (data) {
 
         renderGameBoard(gridDiv);
 
-    }
+        const chatMessages = document.querySelector('.chat-messages');
+            
+      socket.on('message', message => {
+          printChatMessage(message);
+          console.log(message);
 
+          // scroll down
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
+
+      chatMsg(currentUser);
+      // printUsers(data);
+
+    }
+  
 }
 
 

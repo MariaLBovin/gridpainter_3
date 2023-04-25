@@ -1,4 +1,6 @@
-$main-color1: #adb7b2;
+@import '_chatt';
+
+$main-color1: #27f591;
 $main-color2: #1be7fa;
 $main-color3: #FCE38A;
 $main-color4: #F38181;
@@ -58,11 +60,6 @@ p {
   color: red;
 }
 
-
-.grid {
-  margin: 1em auto;
-  border-collapse: collapse;
-}
 .grid td {
   cursor: pointer;
   width: 30px;
@@ -113,5 +110,15 @@ p {
     margin-top: 20px;
     padding: 5px;
   }
+}
+
+.play-div {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.main-div {
+  display: flex;
 }
 

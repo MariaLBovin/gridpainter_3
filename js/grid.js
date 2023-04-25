@@ -1,7 +1,6 @@
 
-
 export function renderGameBoard(gridDiv){
-
+//console.log('test');
 let lastClicked;
 
 const grid = clickableGrid(15, 15, function(el, row, col, i) {
@@ -15,6 +14,7 @@ const grid = clickableGrid(15, 15, function(el, row, col, i) {
 gridDiv.append(grid);
 
 function clickableGrid( rows, cols, callback ){
+    //console.log('test');
     let i=0;
     const grid = document.createElement('table');
     grid.className = 'grid';
