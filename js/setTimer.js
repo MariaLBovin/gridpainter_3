@@ -1,4 +1,3 @@
-import createDesktopThree from "./createDesktopThree.js";
 
 export let countDown = document.createElement("span");
 setInterval(setTimer, 1000);

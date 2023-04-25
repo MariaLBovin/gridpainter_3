@@ -7,14 +7,14 @@ import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
+import { printUsers } from "./createChat.js";
 
 export default function createDesktopThree (data) {
-    
-    //console.log(data);
+
     createGameHtml(data);
-        
+
     function createGameHtml(data) {
-        
+
         //console.log(data);
 
         const currentUser = data.find(data => data.id === socket.id);
@@ -22,16 +22,16 @@ export default function createDesktopThree (data) {
         const container = document.querySelector('.contentContainer');
         container.innerHTML = "";
         //console.log(container);
-    
+
         const mainDiv = document.createElement('div');
         mainDiv.classList.add('main-div');
-    
+
         const playDiv = document.createElement('div');
         playDiv.classList.add('play-div');
 
         const imageDiv = document.createElement('div');
         imageDiv.classList.add('image-div');
-        
+
         const chatDiv = document.createElement('div');
         chatDiv.classList.add('chat-div');
         chatDiv.innerHTML = ` <div class="chat-container">
@@ -60,37 +60,37 @@ export default function createDesktopThree (data) {
       </form>
     </div>
   </div>`;
-    
+
         const headerDiv = document.createElement('div');
         headerDiv.classList.add('header-div');
-    
+
         const colourAttached = document.createElement("span");
         colourAttached.classList.add('color-span');
         colourAttached.style.backgroundColor = currentUser.color;
-    
+
         const displayTime = document.createElement("span");
         displayTime.classList.add('time-span');
         displayTime.innerText = "Återstående tid kvar: ";
-    
+
         const displayName = document.createElement("h3");
         displayName.classList.add('name-h3');
         displayName.innerText = 'Hej ' + currentUser.userName + ', du är färgen';
-    
+
         const gridDiv = document.createElement('div');
         gridDiv.classList.add('grid-div');
-    
-    
+
+
         const footerDiv = document.createElement('div');
         footerDiv.classList.add('footer-div');
-    
+
         const cancelBtn = document.createElement("button");
         cancelBtn.innerText = "Avbryt";
-    
+
         const resultBtn = document.createElement("button");
         resultBtn.id = "resultBtn";
         resultBtn.innerText = "Se resultat";
-    
-    
+
+
         // resultBtn.addEventListener("click", seeResult);
         // cancelBtn.addEventListener("click", cancel);
         container.appendChild(mainDiv);
@@ -102,10 +102,11 @@ export default function createDesktopThree (data) {
         footerDiv.append(resultBtn, cancelBtn);
 
   const chatMessages = document.querySelector('.chat-messages');
-            
+
+      
     socket.on('message', message => {
     printChatMessage(message);
-    console.log(message);
+    console.log('printchatmessage', message);
 
     // scroll down
       chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -115,6 +116,7 @@ export default function createDesktopThree (data) {
 
         renderGameBoard(gridDiv, currentUser);
         createGrid(imageDiv);
+        printChatMessage(chatMessages);
 
 
 
@@ -137,7 +139,7 @@ export default function createDesktopThree (data) {
                 id: cell.id,
                 style: cell.style.backgroundColor,
               };
-              
+
               rowArray.push(cellObject);
             }
 
@@ -151,7 +153,7 @@ export default function createDesktopThree (data) {
           // create an object with the grid data and a name for the conclusion pic
           const dbConclusionPic = {name: "flower", grid: conclusionFlat};
           socket.emit("grid-data", dbConclusionPic);
-        });            
+        });
     }
 }
 

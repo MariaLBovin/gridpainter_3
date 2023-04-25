@@ -18,6 +18,13 @@ export default function init  () {
         createDesktopTwo();
       
     });
+
+    // loginBtn.addEventListener("click", ()  => {
+    //     socket.emit('getUser', userName.value);
+    //         //updateUsers ();
+    //     createDesktopTwo();
+      
+    // });
 }
 
 init ();

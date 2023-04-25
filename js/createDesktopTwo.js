@@ -1,6 +1,6 @@
 import createDesktopThree from "./createDesktopThree.js";
 import { socket } from "./main.js";
-import { printUsers } from "./createChat.js";
+import { printChatMessage, printUsers } from "./createChat.js";
 import fetchImage from "./fetchImage.js";
 
 
@@ -8,7 +8,7 @@ export default function createDesktopTwo() {
   const contentContainer = document.querySelector(".contentContainer");
   contentContainer.innerHTML = "";
 
-  function updateContent(data) {
+  function desktopTwoInnerHTML(data) {
     const containerDiv = document.createElement("div");
 
     const playerHeader = document.createElement("h2");
@@ -32,23 +32,36 @@ export default function createDesktopTwo() {
 
     startGameBtn.addEventListener("click", (e) => {
         e.preventDefault();
-
+      
         socket.emit('joinGame', ({ data }));
 
-        socket.on('gameUsers', (data) => {
-          printUsers(data);
-          fetchImage();
-        });
-
-        
-        console.log(data);
-        createDesktopThree(data);
-    } );
+        // socket.on('message', message => {
+        //   //printChatMessage(message);
+        //   console.log('printchatmessage', message);
+      
+        //   // scroll down
+        //     //chatMessages.scrollTop = chatMessages.scrollHeight;
+        //     });
+        // socket.on('gameUsers', (data) => {
+        //   //console.log('gameUser', data);
+        //   printUsers(data);
+        //   //fetchImage();
+        // });
+        // createDesktopThree(data);
+    });
+    
   }
+
+  socket.on('gameUsers', (data) => {
+    createDesktopThree(data, );
+    printUsers(data);
+  });
+
+  
 
   function handleUpdateUsers(data) {
     contentContainer.innerHTML = "";
-    updateContent(data);
+    desktopTwoInnerHTML(data);
   }
 
   socket.on("updateUsers", handleUpdateUsers);
@@ -64,5 +77,8 @@ export default function createDesktopTwo() {
 
     contentContainer.appendChild(backButton);
   });
+  
 }
+
+
 
