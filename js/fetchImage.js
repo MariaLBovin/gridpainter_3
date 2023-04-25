@@ -10,7 +10,7 @@ export default async function fetchImage () {
                 const randomElement = img[randomIndex];
                 // console.log("random element:", randomElement);
                 // console.log("img:", img.length);
-
+                socket.emit("image", randomElement);
                 //console.log("random image:", randomImage);
                 const img1 = randomElement.grid;
                 img1.forEach(img => {
@@ -31,10 +31,21 @@ export default async function fetchImage () {
                 
             }
     );  
-    socket.emit('image', (randomElement) => {
-        console.log('det här är vårt randomElementFront', randomElement);
-    });
+    // socket.emit('image', (randomElement) => {
+    //     console.log('det här är vårt randomElementFront', randomElement);
+    // });
+    socket.on("image", (randomElement) => {
+        // Update the grid with the new image
+        const img1 = randomElement.grid;
+        img1.forEach((img) => {
+          const color = img.style;
+          const position = img.id;
+          const cell1 = document.querySelector(`#square-${position}`);
+          cell1.style.backgroundColor = color;
+        });
+      });
 }
+
 //facit.forEach(item => {
                 //console.log(item.color);
                 //const color = item.color;

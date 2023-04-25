@@ -37,14 +37,14 @@ export default function createDesktopTwo() {
 
         socket.on('gameUsers', (data) => {
           printUsers(data);
-          fetchImage();
+          // fetchImage();
         });
         
         // socket.on('image', (randomElement) => {
         //   console.log('här är vårt randomElement', randomElement);
         // });
         
-        console.log(data);
+        // console.log(data);
         createDesktopThree(data);
     } );
   }

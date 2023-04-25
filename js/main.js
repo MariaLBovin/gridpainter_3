@@ -12,12 +12,12 @@ export default function init  () {
     
     socket.emit('userEnter', 1, "hej");
 
-    loginBtn.addEventListener("click", ()  => {
-        socket.emit('getUser', userName.value);
-            //updateUsers ();
-        createDesktopTwo();
-      
-    });
 }
+
+loginBtn.addEventListener("click", ()  => {
+    socket.emit('getUser', userName.value);
+        //updateUsers ();
+    createDesktopTwo();  
+});
 
 init ();

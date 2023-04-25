@@ -105,7 +105,7 @@ export default function createDesktopThree (data) {
             
     socket.on('message', message => {
     printChatMessage(message);
-    console.log(message);
+    // console.log(message);
 
     // scroll down
       chatMessages.scrollTop = chatMessages.scrollHeight;

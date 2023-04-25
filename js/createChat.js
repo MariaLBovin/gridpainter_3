@@ -1,11 +1,11 @@
 export const socket = io('http://localhost:3000');
 
 export function chatMsg(currentUser) {
-    console.log(currentUser);
+    // console.log(currentUser);
     const chatForm = document.getElementById('chat-form');
 
     const username = currentUser.userName;
-    console.log(username);
+    // console.log(username);
 
     chatForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ export function chatMsg(currentUser) {
         const msg = e.target.elements.msg.value;
         
         socket.emit('chatMessage', msg, username);
-        console.log(msg, username);
+        // console.log(msg, username);
 
         e.target.elements.msg.value = '';
         e.target.elements.msg.focus();
@@ -30,7 +30,7 @@ export function printChatMessage(message) {
 }
 
 export function printUsers(data) {
-    console.log(data);
+    // console.log(data);
     const userList = document.getElementById('users');
     userList.innerHTML = `
     ${data.map(user => `<li>${user.userName}</li>`).join('')}
