@@ -10,7 +10,7 @@ body {
   margin: 0;
   max-width: 100%;
   max-width: 100%;
-  background-color: $main-color1;
+  background-color:grey;
 }
 
 .contentContainer {
@@ -121,5 +121,11 @@ p {
 
 .main-div {
   display: flex;
+}
+
+.color-span {
+  display: block;
+  width: 15px;
+  height: 15px;
 }
 

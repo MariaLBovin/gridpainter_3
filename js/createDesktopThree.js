@@ -64,9 +64,9 @@ export default function createDesktopThree (data) {
         const headerDiv = document.createElement('div');
         headerDiv.classList.add('header-div');
     
-        const colourAttached = document.createElement("p");
-        colourAttached.classList.add('färg-p');
-        colourAttached.innerText = 'Du är färgen ' + currentUser.color;
+        const colourAttached = document.createElement("span");
+        colourAttached.classList.add('color-span');
+        colourAttached.style.backgroundColor = currentUser.color;
     
         const displayTime = document.createElement("span");
         displayTime.classList.add('time-span');
@@ -74,7 +74,7 @@ export default function createDesktopThree (data) {
     
         const displayName = document.createElement("h3");
         displayName.classList.add('name-h3');
-        displayName.innerText = 'Hej ' + currentUser.userName;
+        displayName.innerText = 'Hej ' + currentUser.userName + ', du är färgen';
     
         const gridDiv = document.createElement('div');
         gridDiv.classList.add('grid-div');
@@ -96,7 +96,8 @@ export default function createDesktopThree (data) {
         container.appendChild(mainDiv);
         mainDiv.append(playDiv, imageDiv, chatDiv);
         playDiv.append(headerDiv, gridDiv, footerDiv);
-        headerDiv.append(displayName, colourAttached, displayTime);
+        headerDiv.append(displayName,  displayTime);
+        displayName.appendChild(colourAttached);
         displayTime.append(countDown);
         footerDiv.append(resultBtn, cancelBtn);
 
