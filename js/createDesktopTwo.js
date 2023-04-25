@@ -39,7 +39,10 @@ export default function createDesktopTwo() {
           printUsers(data);
           fetchImage();
         });
-
+        
+        // socket.on('image', (randomElement) => {
+        //   console.log('här är vårt randomElement', randomElement);
+        // });
         
         console.log(data);
         createDesktopThree(data);

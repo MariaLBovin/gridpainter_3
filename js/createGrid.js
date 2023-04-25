@@ -1,5 +1,4 @@
 import fetchImage from "./fetchImage.js";
-
 export default function createGrid (imageDiv, ) {
 //const container = document.querySelector(".image-div");
 
@@ -17,14 +16,16 @@ for (let i = 0; i < 15; i++) {
     //console.log(cell);
     row.appendChild(cell);
 
-    fetchImage(cell);
+    // fetchImage(cell);
   }
-  
 }
 imageDiv.appendChild(table);
 
+fetchImage();
 
 }
+
+
 
 //cell.id = `cell-${i}`;
 //(i * 15 + j + 1).toString();
