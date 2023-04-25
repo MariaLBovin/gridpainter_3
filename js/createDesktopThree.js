@@ -5,7 +5,7 @@ import { renderGameBoard } from "./grid.js";
 //import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
-import { chatMsg, printUsers } from "./createChat.js";
+import { chatMsg } from "./createChat.js";
 
 
 export default function createDesktopThree (data) {
@@ -113,7 +113,7 @@ export default function createDesktopThree (data) {
       });
 
       chatMsg(currentUser);
-      printUsers(data);
+      // printUsers(data);
 
     }
   

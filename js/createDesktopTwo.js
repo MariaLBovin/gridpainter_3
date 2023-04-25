@@ -1,5 +1,6 @@
 import createDesktopThree from "./createDesktopThree.js";
 import { socket } from "./main.js";
+import { printUsers } from "./createChat.js";
 
 
 export default function createDesktopTwo() {
@@ -33,6 +34,9 @@ export default function createDesktopTwo() {
 
         socket.emit('joinGame', ({ data }));
 
+        socket.on('gameUsers', (data) => {
+          printUsers(data);
+        });
         console.log(data);
         createDesktopThree(data);
     } );

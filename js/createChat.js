@@ -4,7 +4,7 @@ export function chatMsg(currentUser) {
     console.log(currentUser);
     const chatForm = document.getElementById('chat-form');
 
-    let username = currentUser.userName;
+    const username = currentUser.userName;
     console.log(username);
 
     chatForm.addEventListener('submit', (e) => {
@@ -30,6 +30,7 @@ export function printChatMessage(message) {
 }
 
 export function printUsers(data) {
+    console.log(data);
     const userList = document.getElementById('users');
     userList.innerHTML = `
     ${data.map(user => `<li>${user.userName}</li>`).join('')}
