@@ -5,6 +5,8 @@ import { renderGameBoard } from "./grid.js";
 import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
+import { chatMsg } from "./createChat.js";
+import createGrid from "./createGrid.js";
 
 export default function createDesktopThree (data) {
     
@@ -26,7 +28,10 @@ export default function createDesktopThree (data) {
     
         const playDiv = document.createElement('div');
         playDiv.classList.add('play-div');
-    
+
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('image-div');
+        
         const chatDiv = document.createElement('div');
         chatDiv.classList.add('chat-div');
         chatDiv.innerHTML = ` <div class="chat-container">
@@ -89,23 +94,26 @@ export default function createDesktopThree (data) {
         // resultBtn.addEventListener("click", seeResult);
         // cancelBtn.addEventListener("click", cancel);
         container.appendChild(mainDiv);
-        mainDiv.append(playDiv, chatDiv);
+        mainDiv.append(playDiv, imageDiv, chatDiv);
         playDiv.append(headerDiv, gridDiv, footerDiv);
         headerDiv.append(displayName, colourAttached, displayTime);
         displayTime.append(countDown);
         footerDiv.append(resultBtn, cancelBtn);
 
-        const chatMessages = document.querySelector('.chat-messages');
+  const chatMessages = document.querySelector('.chat-messages');
             
-            socket.on('message', message => {
-                printChatMessage(message);
-                console.log(message);
+    socket.on('message', message => {
+    printChatMessage(message);
+    console.log(message);
 
-                // scroll down
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            });
+    // scroll down
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
+
+    chatMsg(currentUser);
 
         renderGameBoard(gridDiv, currentUser);
+        createGrid(imageDiv);
 
 
 

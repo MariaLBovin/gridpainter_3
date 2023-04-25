@@ -1,5 +1,7 @@
 import createDesktopThree from "./createDesktopThree.js";
 import { socket } from "./main.js";
+import { printUsers } from "./createChat.js";
+import fetchImage from "./fetchImage.js";
 
 
 export default function createDesktopTwo() {
@@ -28,7 +30,18 @@ export default function createDesktopTwo() {
     contentContainer.appendChild(containerDiv);
     containerDiv.append(playerHeader, h3, textArticle, p, startGameBtn);
 
-    startGameBtn.addEventListener("click", () => {
+    startGameBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        socket.emit('joinGame', ({ data }));
+
+        socket.on('gameUsers', (data) => {
+          printUsers(data);
+          fetchImage();
+        });
+
+        
+        console.log(data);
         createDesktopThree(data);
     } );
   }

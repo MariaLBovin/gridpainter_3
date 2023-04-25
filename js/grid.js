@@ -27,7 +27,7 @@ export function renderGameBoard(gridDiv, currentUser){
 
     gridDiv.append(grid);
 
-    function clickableGrid( rows, cols, callback ){
+     function clickableGrid( rows, cols, callback ){
 
         let i=0;
         const grid = document.createElement('table');
