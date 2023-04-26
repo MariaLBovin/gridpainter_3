@@ -1,4 +1,5 @@
 import createDesktopTwo from "./createDesktopTwo.js";
+import checkPercentage from "./checkpercentage.js";
 //import updateUsers from "./getPlayer.js";
 export const socket = io('http://localhost:3000');
 
