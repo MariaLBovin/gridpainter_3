@@ -7,6 +7,7 @@ import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
+import { printUsers } from "./createChat.js";
 
 export default function createDesktopThree (data) {
     
@@ -151,7 +152,14 @@ export default function createDesktopThree (data) {
           // create an object with the grid data and a name for the conclusion pic
           const dbConclusionPic = {name: "flower", grid: conclusionFlat};
           socket.emit("grid-data", dbConclusionPic);
-        });            
+        });   
+        
+        socket.emit('joinGame', ({ data }));
+
+        socket.on('gameUsers', (data) => {
+          printUsers(data);
+          // fetchImage();
+        });
     }
 }
 

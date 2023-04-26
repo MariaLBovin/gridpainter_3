@@ -34,26 +34,16 @@ export default function createDesktopTwo() {
     startGameBtn.addEventListener("click", (e) => {
         e.preventDefault();
 
-        socket.emit('joinGame', ({ data }));
 
-        socket.on('gameUsers', (data) => {
-          printUsers(data);
-          // fetchImage();
-        });
-        
-        // socket.on('image', (randomElement) => {
-        //   console.log('här är vårt randomElement', randomElement);
-        // });
-        
-        // console.log(data);
-        createDesktopThree(data);
     } );
+    
     console.log('inloggade i spelet' + data);
 
     socket.emit('startGame', (data));
 
     socket.on('activateStartGameBtn', () => {
       startGameBtn.disabled = false; // Aktivera knappen 
+      createDesktopThree(data);
     });
   }
 
