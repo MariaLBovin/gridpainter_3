@@ -7,8 +7,8 @@ $main-color4: #F38181;
 
 .chat-container {
 	max-width: 1100px;
-	padding: 20px;
-	background: $main-color2;
+	padding: 5px;
+	background: #31858F;
 	margin: 30px;
 	overflow: hidden;
 	border: 1px solid #000;
@@ -16,11 +16,11 @@ $main-color4: #F38181;
 }
 
 .chat-header {
-	background: $main-color1;
-	color: #000;
+	background: #DEFFF0;
+	
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-	padding: 15px;
+	margin: 15px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -29,13 +29,15 @@ $main-color4: #F38181;
 .chat-main {
 	display: grid;
 	grid-template-columns: 1fr 3fr;
+	margin: 15px;
 }
 
 .chat-sidebar {
-	background: $main-color4;
+	background: #DEFFF0;
 	text-align: left;
-	color: #000;
-	padding: 20px 30px 60px;
+	
+	margin: 15px;
+	
 
 	ul {
 		list-style: none;
@@ -54,7 +56,7 @@ $main-color4: #F38181;
 }
 
 .chat-messages {
-	padding: 30px;
+	margin: 15px;
 	max-height: 500px;
 	overflow-y: scroll;
 
@@ -68,7 +70,7 @@ $main-color4: #F38181;
 	.message .meta {
 		font-size: 15px;
 		font-weight: bold;
-		color: #000;
+		
 		opacity: 0.7;
 		margin-bottom: 7px;
 	}
@@ -96,7 +98,7 @@ $main-color4: #F38181;
 
 	.btn {
 		border-radius: 5px;
-		background-color: $main-color2;
+		background-color: #31858F;
 	}
 	
 }
