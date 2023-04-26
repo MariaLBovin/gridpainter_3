@@ -8,6 +8,7 @@ import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
 import fetchImage from './fetchImage.js';
+import { img1 } from "./fetchImage.js";
 
 
 // const facit = [1, 2, 3];
@@ -97,7 +98,6 @@ export default function createDesktopThree (data) {
     
     
         resultBtn.addEventListener("click", async () => {
-          const img1 = await fetchImage();
           console.log(img1);
             // const similarityPercentage = checkPercentage(img1, conclusionPic);
             // console.log(similarityPercentage);

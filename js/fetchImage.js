@@ -1,5 +1,5 @@
 import { socket } from "./main.js";
-// let img1 = '';
+export let img1;
 
 export default async function fetchImage () {
     //console.log(cell);
@@ -13,7 +13,7 @@ export default async function fetchImage () {
                 // console.log("img:", img.length);
                 socket.emit("image", randomElement);
                 //console.log("random image:", randomImage);
-                const img1 = randomElement.grid;
+                img1 = randomElement.grid;
                 img1.forEach(img => {
                     //console.log("img id:", img.id);
                     // console.log("img style:", img.style);
@@ -24,12 +24,11 @@ export default async function fetchImage () {
                     //console.log("cell1:", cell1);
                     cell1.style.backgroundColor = color;
                 });
-                return img1;
                 //console.log("img",img[0].grid);
                 
                 // console.log(img1);
                 // console.log(img1[0].id);
-                
+            
                 
             }
     );  
