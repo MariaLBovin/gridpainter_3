@@ -25,6 +25,7 @@ export default function createDesktopTwo() {
 
     const startGameBtn = document.createElement("button");
     startGameBtn.innerText = "Starta spelet";
+    startGameBtn.disabled = true;
 
     contentContainer.appendChild(containerDiv);
     containerDiv.append(playerHeader, h3, textArticle, p, startGameBtn);
@@ -40,6 +41,13 @@ export default function createDesktopTwo() {
         console.log(data);
         createDesktopThree(data);
     } );
+    console.log('inloggade i spelet' + data);
+
+    socket.emit('startGame', (data));
+
+    socket.on('activateStartGameBtn', () => {
+      startGameBtn.disabled = false; // Enable the start game button
+    });
   }
 
   function handleUpdateUsers(data) {
