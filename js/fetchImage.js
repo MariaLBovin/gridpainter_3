@@ -1,4 +1,5 @@
 import { socket } from "./main.js";
+// let img1 = '';
 
 export default async function fetchImage () {
     //console.log(cell);
@@ -23,6 +24,7 @@ export default async function fetchImage () {
                     //console.log("cell1:", cell1);
                     cell1.style.backgroundColor = color;
                 });
+                return img1;
                 //console.log("img",img[0].grid);
                 
                 // console.log(img1);
