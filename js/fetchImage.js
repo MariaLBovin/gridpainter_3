@@ -8,11 +8,14 @@ export default async function fetchImage () {
                 // Randomly select an object from the array
                 const randomIndex = Math.floor(Math.random() * img.length);
                 const randomElement = img[randomIndex];
+                console.log(randomElement);
                 // console.log("random element:", randomElement);
                 // console.log("img:", img.length);
-                socket.emit("image", randomElement);
+                // socket.emit("image", img1);
                 //console.log("random image:", randomImage);
                 const img1 = randomElement.grid;
+                socket.emit("image", img1);
+                console.log(img1);
                 img1.forEach(img => {
                     //console.log("img id:", img.id);
                     // console.log("img style:", img.style);
@@ -34,9 +37,9 @@ export default async function fetchImage () {
     // socket.emit('image', (randomElement) => {
     //     console.log('det här är vårt randomElementFront', randomElement);
     // });
-    socket.on("image", (randomElement) => {
+    socket.on("image", (img1) => {
         // Update the grid with the new image
-        const img1 = randomElement.grid;
+        // const img1 = randomElement.grid;
         img1.forEach((img) => {
           const color = img.style;
           const position = img.id;

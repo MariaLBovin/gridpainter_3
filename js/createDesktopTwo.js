@@ -34,18 +34,25 @@ export default function createDesktopTwo() {
     startGameBtn.addEventListener("click", (e) => {
         e.preventDefault();
 
+        socket.emit('startGame', (data));
+        
+        // createDesktopThree(data);
 
     } );
     
     console.log('inloggade i spelet' + data);
 
-    socket.emit('startGame', (data));
+    socket.emit('startGameBtn', (data));
 
-    socket.on('activateStartGameBtn', () => {
+    socket.on('activateGameBtn', () => {
       startGameBtn.disabled = false; // Aktivera knappen 
-      createDesktopThree(data);
+      // createDesktopThree(data);
     });
   }
+
+  socket.on('startGame', (data) => {
+    createDesktopThree(data);
+  });
 
   function handleUpdateUsers(data) {
     contentContainer.innerHTML = "";
