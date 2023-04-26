@@ -18,8 +18,8 @@ export default function checkPercentage(array1, array2) {
     return (count / array1.length) * 100;
   }
 
-  const facit = [1, 2, 3];
-const input = [1, 2, 3];
+    const facit = [1, 2, 3];
+    const input = [1, 2, 3];
 
-  const similarityPercentage = checkPercentage(input, facit);
+    const similarityPercentage = checkPercentage(input, facit);
 console.log(`Ni hade ${similarityPercentage}% rätt`);
