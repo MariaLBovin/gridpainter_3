@@ -46,7 +46,7 @@ export default function createDesktopTwo() {
     socket.emit('startGame', (data));
 
     socket.on('activateStartGameBtn', () => {
-      startGameBtn.disabled = false; // Enable the start game button
+      startGameBtn.disabled = false; // Aktivera knappen 
     });
   }
 
