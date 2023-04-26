@@ -1,6 +1,7 @@
 import createDesktopThree from "./createDesktopThree.js";
 import { socket } from "./main.js";
 import { printUsers } from "./createChat.js";
+import fetchImage from "./fetchImage.js";
 
 
 export default function createDesktopTwo() {
@@ -36,8 +37,14 @@ export default function createDesktopTwo() {
 
         socket.on('gameUsers', (data) => {
           printUsers(data);
+          // fetchImage();
         });
-        console.log(data);
+        
+        // socket.on('image', (randomElement) => {
+        //   console.log('här är vårt randomElement', randomElement);
+        // });
+        
+        // console.log(data);
         createDesktopThree(data);
     } );
   }
