@@ -87,6 +87,7 @@ export default function createDesktopThree (data) {
         resultBtn.innerText = "Se resultat";
     
     
+    
         // resultBtn.addEventListener("click", seeResult);
         // cancelBtn.addEventListener("click", cancel);
         container.appendChild(mainDiv);
