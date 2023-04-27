@@ -1,4 +1,4 @@
-import checkPercentage from "./checkpercentage.js";
+
 import { renderGameBoard } from "./grid.js";
 import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
@@ -6,13 +6,8 @@ import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
 import { printUsers } from "./createChat.js";
-import { img1 } from "./fetchImage.js";
 
-
-// const facit = [1, 2, 3];
-// const input = [1, 2, 3];
-
-
+import displaySolution from "./createSolution.js";
 
 
 export default function createDesktopThree (data) {
@@ -155,47 +150,16 @@ export default function createDesktopThree (data) {
 
         //FIXME: this is for making conclusion picture and save it db
         resultBtn.addEventListener("click", () => {
-          const gridContainer = document.querySelector(".grid");
-          const conclusionPic = [];
-
-          // loop through each row in the grid
-          for (let i = 0; i < gridContainer.rows.length; i++) {
-            const row = gridContainer.rows[i];
-            const rowArray = [];
-
-            // loop through each cell in the current row
-            for (let j = 0; j < row.cells.length; j++) {
-              const cell = row.cells[j];
-
-              // create an object to store the cell data
-              const cellObject = {
-                id: cell.id,
-                style: cell.style.backgroundColor,
-              };
-              
-              rowArray.push(cellObject);
-            }
-
-            // add the row array to the conclusion pic array
-            conclusionPic.push(rowArray);
-          }
-
-          // flatten the conclusion pic array into a one array with method concat
-          const conclusionFlat = [].concat(...conclusionPic);
-
-            const similarityPercentage = checkPercentage(img1, conclusionFlat);
-            console.log("percetage:", similarityPercentage);
-            
-          // create an object with the grid data and a name for the conclusion pic
-          // const dbConclusionPic = {name: "flower", grid: conclusionFlat};
-          // socket.emit("grid-data", dbConclusionPic);
+          displaySolution(gridDiv);
+          
         });            
+
+        
 
         socket.emit('joinGame', ({ data }));
 
         socket.on('gameUsers', (data) => {
           printUsers(data);
-          // fetchImage();
         });
     }
   }
