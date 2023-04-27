@@ -2,6 +2,7 @@
 @import '_grid';
 @import '_desktop1';
 @import '_desktop2';
+@import '_desktop3';
 
 
 
@@ -13,7 +14,7 @@ $main-color4: #F38181;
 body {
   margin: 3%;
   max-width: 100%;
-  max-width: 100%;
+  max-height: 100%;
   background-color:#DEFFF0;
   color: #31858F;
   text-align: center;
@@ -36,8 +37,13 @@ article {
   line-height: 1.5rem;
 }
 
+h1 {
+  font-size: 5rem;
+  
+}
+
 h2 {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 
@@ -46,35 +52,4 @@ h2 {
   max-height: 100vh;
 }
 
-
-.grid td {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ccc;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 13px;
-}
-.grid td.clicked {
-  background-color: yellow;
-  font-weight: bold;
-  color: red;
-}
-
-.play-div {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-}
-
-.main-div {
-  display: flex;
-}
-
-.color-span {
-  display: block;
-  width: 15px;
-  height: 15px;
-}
 

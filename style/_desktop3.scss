@@ -1,0 +1,55 @@
+.main-div {
+    
+    display: flex;
+   
+    justify-content: space-between;
+    width: 100%;
+}
+
+.play-div {
+ 
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-div {
+    margin-top: 10%;
+   
+}
+
+.image-div td {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+.chat-div {
+     
+}
+
+
+.grid td {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+.grid td.clicked {
+background-color: yellow;
+font-weight: bold;
+color: red;
+}
+
+
+.color-span {
+display: block;
+width: 15px;
+height: 15px;
+}
