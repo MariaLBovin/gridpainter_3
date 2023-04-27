@@ -3,12 +3,9 @@ import checkPercentage from "./checkpercentage.js";
 import { img1 } from "./fetchImage.js";
 
 
+
 export default function displaySolution (gridDiv) {
-    socket.on('result', (similarityPercentage) => {
-        console.log("percetage:", similarityPercentage);
-
-      });
-
+    
         const gridContainer = document.querySelector(".grid");
         const conclusionPic = [];
 

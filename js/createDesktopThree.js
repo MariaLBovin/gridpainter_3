@@ -152,8 +152,19 @@ export default function createDesktopThree (data) {
         resultBtn.addEventListener("click", () => {
           displaySolution(gridDiv);
           
+          
+          
         });            
-
+        socket.on('result', (similarityPercentage) => {
+          gridDiv.innerHTML= '';
+          console.log("percetage:", similarityPercentage);
+          const resultDiv = document.createElement('div');
+          resultDiv.innerHTML = `Grattis! Ni fick ${similarityPercentage} rätt. Bra jobbat`;
+          
+          gridDiv.append(resultDiv);
+  
+        });
+          
         
 
         socket.emit('joinGame', ({ data }));

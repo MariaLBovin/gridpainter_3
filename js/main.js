@@ -12,7 +12,14 @@ export default function init  () {
     });
     
     loginBtn.addEventListener("click", ()  => {
-        socket.emit('getUser', userName.value);
+        socket.emit('getUser', userName.value,(success) => {
+            if(success){
+                console.log(userName + 'är inloggad');
+            }else {
+                alert('Spelet är fullt');
+        
+            }
+        })  ;
             //updateUsers ();
         createDesktopTwo();  
     });
