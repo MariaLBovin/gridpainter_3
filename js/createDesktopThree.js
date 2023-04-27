@@ -129,6 +129,8 @@ export default function createDesktopThree (data) {
     chatMsg(currentUser);
 
         renderGameBoard(gridDiv, currentUser);
+
+        
         createGrid(imageDiv);
 
 
