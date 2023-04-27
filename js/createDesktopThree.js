@@ -6,8 +6,9 @@ import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
 import { printUsers } from "./createChat.js";
-
+import { myInterval } from "./setTimer.js";
 import displaySolution from "./createSolution.js";
+// import playAgain from "./playAgainBtn.js";
 
 
 export default function createDesktopThree (data) {
@@ -94,14 +95,6 @@ export default function createDesktopThree (data) {
         resultBtn.id = "resultBtn";
         resultBtn.innerText = "Se resultat";
     
-    
-        // resultBtn.addEventListener("click", async () => {
-        //   console.log("img1 HÄR:", img1);
-        //     const similarityPercentage = checkPercentage(img1, conclusionPic);
-        //     console.log(similarityPercentage);
-        //   });
-
-        // cancelBtn.addEventListener("click", cancel);
         container.appendChild(mainDiv);
         mainDiv.append(playDiv, imageDiv, chatDiv);
         playDiv.append(headerDiv, gridDiv, footerDiv);
@@ -115,6 +108,7 @@ export default function createDesktopThree (data) {
     window.location.href = "index.html";
 
   }
+
   cancelBtn.addEventListener("click", () => {
     console.log("Avbryt");
     socket.emit("cancelGame");
@@ -128,9 +122,6 @@ export default function createDesktopThree (data) {
   });
 
 
-
-
-
     socket.on('message', message => {
     printChatMessage(message);
     // console.log(message);
@@ -141,32 +132,32 @@ export default function createDesktopThree (data) {
 
     chatMsg(currentUser);
 
-        renderGameBoard(gridDiv, currentUser);
-
-        
+        renderGameBoard(gridDiv, currentUser);        
         createGrid(imageDiv);
+      
 
-
-
-        //FIXME: this is for making conclusion picture and save it db
         resultBtn.addEventListener("click", () => {
           displaySolution(gridDiv);
-          
-          
-          
-        });            
-        socket.on('result', (similarityPercentage) => {
-          gridDiv.innerHTML= '';
-          console.log("percetage:", similarityPercentage);
-          const resultDiv = document.createElement('div');
-          resultDiv.innerHTML = `Grattis! Ni fick ${similarityPercentage} rätt. Bra jobbat`;
-          
-          gridDiv.append(resultDiv);
-  
-        });
-          
-        
 
+        }); 
+
+        socket.on('result', (similarityPercentage) => {
+          gridDiv.innerHTML='';
+          console.log("percentage:", similarityPercentage);
+          const resultDiv = document.createElement('div');
+          resultDiv.innerHTML = `Grattis! Ni fick ${similarityPercentage}% rätt. Bra jobbat.`;
+          gridDiv.append(resultDiv);
+
+
+          resultBtn.style.display = "none";
+          clearInterval(myInterval);
+          
+          const playAgainBtn = document.createElement("button");
+          playAgainBtn.classList.add("playaAgainBtn");
+          playAgainBtn.innerHTML = "Spela igen";
+          footerDiv.prepend(playAgainBtn);
+        });
+        
         socket.emit('joinGame', ({ data }));
 
         socket.on('gameUsers', (data) => {

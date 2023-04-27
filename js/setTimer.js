@@ -1,10 +1,8 @@
-import createDesktopThree from "./createDesktopThree.js";
+export const countDown = document.createElement("span");
+export const myInterval = setInterval(setTimer, 1000);
 
-export let countDown = document.createElement("span");
-setInterval(setTimer, 1000);
 const startingMinutes = 5;
 let time = startingMinutes * 60;
-
 
 export default function setTimer(){
     const minutes = Math.floor(time / 60);
