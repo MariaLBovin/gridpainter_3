@@ -35,6 +35,7 @@ export default function createDesktopTwo() {
         e.preventDefault();
 
         socket.emit('startGame', (data));
+        socket.emit("image"); 
         
         // createDesktopThree(data);
 
