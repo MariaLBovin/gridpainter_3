@@ -10,6 +10,7 @@ export default async function fetchImage () {
         //console.log(randomConclusion);
         //Update the grid with the new image
         const imgArray = randomImage.grid;
+        img1=randomImage;
         
         imgArray.forEach((img) => {
           const color = img.style;
