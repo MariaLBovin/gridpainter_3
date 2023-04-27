@@ -38,6 +38,7 @@ export default function displaySolution (gridDiv) {
         const conclusionFlat = [].concat(...conclusionPic);
 
         const similarityPercentage = checkPercentage(img1.grid, conclusionFlat);
-        //console.log("percetage:", similarityPercentage);
-        socket.emit('result', (similarityPercentage));
+        const roundedPercentage = similarityPercentage.toFixed(2);
+        //console.log("percentage:", roundedPercentage);
+        socket.emit('result', roundedPercentage);
     }

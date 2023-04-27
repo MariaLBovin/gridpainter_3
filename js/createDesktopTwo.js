@@ -32,8 +32,7 @@ export default function createDesktopTwo() {
 
     const startGameBtn = document.createElement("button");
     startGameBtn.innerText = "Starta spelet";
-    startGameBtn.disabled = true;
-
+    startGameBtn.disabled = false;
     contentContainer.appendChild(containerDiv);
     containerDiv.append(playerHeader, h3, textArticle, p, startGameBtn);
 
