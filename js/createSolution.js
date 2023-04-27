@@ -1,5 +1,5 @@
 import { socket } from "./main.js";
-import checkPercentage from "./checkpercentage.js";
+import checkPercentage from "./checkPercentage.js";
 import { img1 } from "./fetchImage.js";
 
 
