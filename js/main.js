@@ -4,6 +4,7 @@ import createDesktopTwo from "./createDesktopTwo.js";
 export const socket = io('http://localhost:3000');
 const loginBtn = document.getElementById("loginBtn");
 const userName = document.getElementById('inputName');
+const alertMsg = document.getElementById('alert-msg');
 
 export default function init  () {
     
@@ -15,10 +16,16 @@ export default function init  () {
 
 }
 
-loginBtn.addEventListener("click", ()  => {
-    socket.emit('getUser', userName.value);
+loginBtn.addEventListener("click", (e)  => {
+    e.preventDefault();
+    if (userName.value === '' || userName.value.length < 4) {
+        alertMsg.innerHTML = 'Ogiltigt spelnamn';
+        return; 
+    } else {
+        socket.emit('getUser', userName.value);
         //updateUsers ();
-    createDesktopTwo();  
+        createDesktopTwo(); 
+    }
 });
 
 init ();
