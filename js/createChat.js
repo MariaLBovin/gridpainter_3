@@ -1,4 +1,4 @@
-export const socket = io('http://localhost:3000');
+import { socket } from "./main";
 
 export function chatMsg(currentUser) {
     // console.log(currentUser);
