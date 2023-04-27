@@ -1,10 +1,16 @@
 import createDesktopThree from "./createDesktopThree.js";
 import { socket } from "./main.js";
-import { printUsers } from "./createChat.js";
-import fetchImage from "./fetchImage.js";
-
 
 export default function createDesktopTwo() {
+
+  function handleUpdateUsers(data) {
+    contentContainer.innerHTML = "";
+    updateContent(data);
+    console.log(data);
+  }
+
+  socket.on("updateUsers", handleUpdateUsers);
+
   const contentContainer = document.querySelector(".contentContainer");
   contentContainer.innerHTML = "";
 
@@ -55,13 +61,7 @@ export default function createDesktopTwo() {
     createDesktopThree(data);
   });
 
-  function handleUpdateUsers(data) {
-    contentContainer.innerHTML = "";
-    updateContent(data);
-    console.log(data);
-  }
-
-  socket.on("updateUsers", handleUpdateUsers);
+  
 
   socket.on("fullGame", () => {
     contentContainer.innerText = "Spelet är fullt, försök igen senare";

@@ -1,14 +1,11 @@
 import checkPercentage from "./checkpercentage.js";
 import { renderGameBoard } from "./grid.js";
-//import cancel from "./gameButtons.js";
-//import { notisDiv } from "./gameButtons.js";
 import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
 import { printUsers } from "./createChat.js";
-import fetchImage from './fetchImage.js';
 import { img1 } from "./fetchImage.js";
 
 
