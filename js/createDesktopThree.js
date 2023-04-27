@@ -7,8 +7,8 @@ import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
 import { printUsers } from "./createChat.js";
 import { myInterval } from "./setTimer.js";
-
 import displaySolution from "./createSolution.js";
+// import playAgain from "./playAgainBtn.js";
 
 
 export default function createDesktopThree (data) {
@@ -135,17 +135,25 @@ export default function createDesktopThree (data) {
         renderGameBoard(gridDiv, currentUser);        
         createGrid(imageDiv);
       
+
         resultBtn.addEventListener("click", () => {
-          displaySolution(gridDiv);  
-          clearInterval(myInterval);        
-        });            
+          displaySolution(gridDiv);
+        }); 
 
         socket.on('result', (similarityPercentage) => {
           gridDiv.innerHTML='';
           console.log("percentage:", similarityPercentage);
           const resultDiv = document.createElement('div');
-          resultDiv.innerHTML = `Grattis! Ni fick ${similarityPercentage} rätt. Bra jobbat.`;
+          resultDiv.innerHTML = `Grattis! Ni fick ${similarityPercentage}% rätt. Bra jobbat.`;
           gridDiv.append(resultDiv);
+
+          resultBtn.style.display = "none";
+          clearInterval(myInterval);
+          
+          const playAgainBtn = document.createElement("button");
+          playAgainBtn.classList.add("playaAgainBtn");
+          playAgainBtn.innerHTML = "Spela igen";
+          footerDiv.prepend(playAgainBtn);
         });
         
         socket.emit('joinGame', ({ data }));
