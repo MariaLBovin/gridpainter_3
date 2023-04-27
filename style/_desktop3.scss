@@ -7,28 +7,39 @@
 }
 
 .play-div {
- 
+    position: relative;
     text-align: left;
     display: flex;
     flex-direction: column;
+    .footer-div {
+        text-align: center;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    span {
+        font-size: 1.5rem;
+    }
 }
 
 .image-div {
     margin-top: 10%;
+    margin-left: 20px;
    
 }
 
 .image-div td {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: 1px solid #ccc;
     text-align: center;
     font-family: sans-serif;
     font-size: 13px;
+    position: relative;
 }
 
 .chat-div {
-     
+    position: relative; 
 }
 
 

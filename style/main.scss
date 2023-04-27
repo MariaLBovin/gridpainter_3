@@ -39,13 +39,17 @@ article {
 
 h1 {
   font-size: 5rem;
-  
+  font-family: monospace;
 }
 
 h2 {
   font-size: 3rem;
+  font-family: monospace;
 }
 
+h3, h4, h5, h6, p, article, button {
+  font-family: monospace;
+}
 
 .contentContainer {
   max-width: 100vw;
