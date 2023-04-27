@@ -1,5 +1,6 @@
 
-# Gridpainter
+# [Gridpainter](https://marialbovin.github.io/gridpainter_3/?)
+
  
 This is a group project called "Gridpainter" developed for school @Medieinstitutet. It's a fun game that requires four players to play, and each player is assigned a unique color: blue, red, green, or yellow. The game is in swedish. 
 
