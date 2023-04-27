@@ -1,18 +1,15 @@
 import { socket } from "./main.js";
-//const facit = [];
-let playerData = [];
+
 export function renderGameBoard(gridDiv, currentUser){
 
-    socket.on('paint', (playerData) => {
-        //console.log(playerData);
-        playerData.forEach((data) => {
-            console.log(data);
-            //const player = data.player;
+    socket.on('paint', (data) => {
+        console.log(data);
+        
             const color = data.color;
             const position = data.position;
             const cell = document.querySelector(`#cell-${position}`);
             cell.style.backgroundColor = color;
-        });
+        
     });
 
     const selectedColor = currentUser.color;
@@ -20,8 +17,11 @@ export function renderGameBoard(gridDiv, currentUser){
 
     const grid = clickableGrid(15, 15, function(el, row, col, i) {
         el.style.backgroundColor = selectedColor;
-        playerData = [];
-        playerData.push({ player: currentUser.id, position: i, color: selectedColor });
+        socket.emit("paint", {
+            player: currentUser.id,
+            position: i,
+            color: selectedColor,
+          });
     });
 
     gridDiv.append(grid);
@@ -43,7 +43,7 @@ export function renderGameBoard(gridDiv, currentUser){
                     return function(){
                         callback(el,r,c,i);
                         
-                        socket.emit('paint', playerData);
+                        //socket.emit('paint', playerData);
                     };
                 })(cell,r,c,i),false);
             }
