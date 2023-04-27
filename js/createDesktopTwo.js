@@ -26,6 +26,7 @@ export default function createDesktopTwo() {
 
     const startGameBtn = document.createElement("button");
     startGameBtn.innerText = "Starta spelet";
+    startGameBtn.disabled = true;
 
     contentContainer.appendChild(containerDiv);
     containerDiv.append(playerHeader, h3, textArticle, p, startGameBtn);
@@ -33,21 +34,25 @@ export default function createDesktopTwo() {
     startGameBtn.addEventListener("click", (e) => {
         e.preventDefault();
 
-        socket.emit('joinGame', ({ data }));
+        socket.emit('startGame', (data));
+        
+        // createDesktopThree(data);
 
-        socket.on('gameUsers', (data) => {
-          printUsers(data);
-          // fetchImage();
-        });
-        
-        // socket.on('image', (randomElement) => {
-        //   console.log('här är vårt randomElement', randomElement);
-        // });
-        
-        // console.log(data);
-        createDesktopThree(data);
     } );
+    
+    console.log('inloggade i spelet' + data);
+
+    socket.emit('startGameBtn', (data));
+
+    socket.on('activateGameBtn', () => {
+      startGameBtn.disabled = false; // Aktivera knappen 
+      // createDesktopThree(data);
+    });
   }
+
+  socket.on('startGame', (data) => {
+    createDesktopThree(data);
+  });
 
   function handleUpdateUsers(data) {
     contentContainer.innerHTML = "";

@@ -7,12 +7,16 @@ import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
+import { printUsers } from "./createChat.js";
 import fetchImage from './fetchImage.js';
 import { img1 } from "./fetchImage.js";
 
 
 // const facit = [1, 2, 3];
 // const input = [1, 2, 3];
+
+
+
 
 export default function createDesktopThree (data) {
     
@@ -166,6 +170,13 @@ export default function createDesktopThree (data) {
           // const dbConclusionPic = {name: "flower", grid: conclusionFlat};
           // socket.emit("grid-data", dbConclusionPic);
         });            
+
+        socket.emit('joinGame', ({ data }));
+
+        socket.on('gameUsers', (data) => {
+          printUsers(data);
+          // fetchImage();
+        });
     }
 }
 
