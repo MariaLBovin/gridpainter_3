@@ -1,7 +1,9 @@
 
 # Gridpainter
  
-This is a group project called "Gridpainter" developed for school @Medieinstitutet. It's a fun game that requires four players to play, and each player is assigned a unique color: blue, red, green, or yellow. The game is in swedish. The game uses a backend repository connected to a database to store and retrieve game data. 
+This is a group project called "Gridpainter" developed for school @Medieinstitutet. It's a fun game that requires four players to play, and each player is assigned a unique color: blue, red, green, or yellow. The game is in swedish. 
+
+The game uses a backend repository connected to a database to store and retrieve game data. 
 *Repository for backend:* 
 [Gridpainter_3-back](https://github.com/tittieth/gridpainter_3-back)
 
