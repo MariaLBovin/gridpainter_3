@@ -9,6 +9,7 @@ import { printUsers } from "./createChat.js";
 import { myInterval } from "./setTimer.js";
 
 import displaySolution from "./createSolution.js";
+import playAgain from "./playAgainBtn.js";
 
 
 export default function createDesktopThree (data) {
@@ -137,7 +138,9 @@ export default function createDesktopThree (data) {
       
         resultBtn.addEventListener("click", () => {
           displaySolution(gridDiv);  
-          clearInterval(myInterval);        
+          clearInterval(myInterval);    
+          resultBtn.style.display = "none";  
+          playAgain();
         });            
 
         socket.on('result', (similarityPercentage) => {
