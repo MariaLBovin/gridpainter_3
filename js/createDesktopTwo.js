@@ -67,7 +67,8 @@ export default function createDesktopTwo() {
     const backButton = document.createElement("button");
     backButton.innerText = "Tillbaka till startsidan";
 
-    backButton.addEventListener("click", function () {
+    backButton.addEventListener("click", function (e) {
+      e.preventDefault();
       window.location.href = "index.html";
     });
 
