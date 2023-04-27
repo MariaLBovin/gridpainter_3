@@ -94,7 +94,9 @@ export default function createDesktopThree (data) {
         footerDiv.classList.add('footer-div');
     
         const cancelBtn = document.createElement("button");
+        cancelBtn.id = "cancelBtn";
         cancelBtn.innerText = "Avbryt";
+
     
         const resultBtn = document.createElement("button");
         resultBtn.id = "resultBtn";
@@ -117,7 +119,26 @@ export default function createDesktopThree (data) {
         footerDiv.append(resultBtn, cancelBtn);
 
   const chatMessages = document.querySelector('.chat-messages');
-            
+  function tillbakatillindex(){
+    window.location.href = "index.html";
+
+  }
+  cancelBtn.addEventListener("click", () => {
+    console.log("Avbryt");
+    socket.emit("cancelGame");
+    tillbakatillindex();
+  });
+  
+
+
+  socket.on("redirect", () => {
+    tillbakatillindex();
+  });
+
+
+
+
+
     socket.on('message', message => {
     printChatMessage(message);
     // console.log(message);
@@ -180,6 +201,7 @@ export default function createDesktopThree (data) {
           // fetchImage();
         });
     }
-}
+  }
+
 
 

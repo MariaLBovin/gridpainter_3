@@ -58,6 +58,7 @@ export default function createDesktopTwo() {
   function handleUpdateUsers(data) {
     contentContainer.innerHTML = "";
     updateContent(data);
+    console.log(data);
   }
 
   socket.on("updateUsers", handleUpdateUsers);
