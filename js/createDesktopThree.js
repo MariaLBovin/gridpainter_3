@@ -7,12 +7,7 @@ import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
-import fetchImage from './fetchImage.js';
-import { img1 } from "./fetchImage.js";
-
-
-// const facit = [1, 2, 3];
-// const input = [1, 2, 3];
+import { printUsers } from "./createChat.js";
 
 export default function createDesktopThree (data) {
     
@@ -159,10 +154,17 @@ export default function createDesktopThree (data) {
         //   // flatten the conclusion pic array into a one array with method concat
         //   const conclusionFlat = [].concat(...conclusionPic);
 
-        //   // create an object with the grid data and a name for the conclusion pic
-        //   const dbConclusionPic = {name: "flower", grid: conclusionFlat};
-        //   socket.emit("grid-data", dbConclusionPic);
-        // });            
+          // create an object with the grid data and a name for the conclusion pic
+          const dbConclusionPic = {name: "flower", grid: conclusionFlat};
+          socket.emit("grid-data", dbConclusionPic);
+        });   
+        
+        socket.emit('joinGame', ({ data }));
+
+        socket.on('gameUsers', (data) => {
+          printUsers(data);
+          // fetchImage();
+        });
     }
 }
 
