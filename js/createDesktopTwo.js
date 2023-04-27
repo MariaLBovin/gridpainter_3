@@ -33,7 +33,6 @@ export default function createDesktopTwo() {
     const startGameBtn = document.createElement("button");
     startGameBtn.innerText = "Starta spelet";
     startGameBtn.disabled = true;
-
     contentContainer.appendChild(containerDiv);
     containerDiv.append(playerHeader, h3, textArticle, p, startGameBtn);
 
@@ -68,7 +67,8 @@ export default function createDesktopTwo() {
     const backButton = document.createElement("button");
     backButton.innerText = "Tillbaka till startsidan";
 
-    backButton.addEventListener("click", function () {
+    backButton.addEventListener("click", function (e) {
+      e.preventDefault();
       window.location.href = "index.html";
     });
 

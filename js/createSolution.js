@@ -1,14 +1,9 @@
 import { socket } from "./main.js";
-import checkPercentage from "./checkpercentage.js";
+import checkPercentage from "./checkPercentage.js";
 import { img1 } from "./fetchImage.js";
 
-
 export default function displaySolution (gridDiv) {
-    socket.on('result', (similarityPercentage) => {
-        console.log("percetage:", similarityPercentage);
-
-      });
-
+    
         const gridContainer = document.querySelector(".grid");
         const conclusionPic = [];
 
@@ -38,6 +33,7 @@ export default function displaySolution (gridDiv) {
         const conclusionFlat = [].concat(...conclusionPic);
 
         const similarityPercentage = checkPercentage(img1.grid, conclusionFlat);
-        //console.log("percetage:", similarityPercentage);
-        socket.emit('result', (similarityPercentage));
+        const roundedPercentage = similarityPercentage.toFixed(2);
+        //console.log("percentage:", roundedPercentage);
+        socket.emit('result', roundedPercentage);
     }
