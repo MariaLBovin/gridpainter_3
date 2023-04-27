@@ -1,4 +1,5 @@
 import { socket } from "./main.js";
+export let img1;
 
 export default async function fetchImage () {
     //console.log(cell);
@@ -12,7 +13,7 @@ export default async function fetchImage () {
                 // console.log("img:", img.length);
                 socket.emit("image", randomElement);
                 //console.log("random image:", randomImage);
-                const img1 = randomElement.grid;
+                img1 = randomElement.grid;
                 img1.forEach(img => {
                     //console.log("img id:", img.id);
                     // console.log("img style:", img.style);
@@ -27,7 +28,7 @@ export default async function fetchImage () {
                 
                 // console.log(img1);
                 // console.log(img1[0].id);
-                
+            
                 
             }
     );  
