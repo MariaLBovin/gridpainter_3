@@ -1,8 +1,5 @@
 import createDesktopThree from "./createDesktopThree.js";
 import { socket } from "./main.js";
-import { printUsers } from "./createChat.js";
-import fetchImage from "./fetchImage.js";
-
 
 export default function createDesktopTwo() {
   const contentContainer = document.querySelector(".contentContainer");
@@ -47,8 +44,9 @@ export default function createDesktopTwo() {
 
     socket.on('activateGameBtn', () => {
       startGameBtn.disabled = false; // Aktivera knappen 
-      // createDesktopThree(data);
+      createDesktopThree(data);
     });
+
   }
 
   socket.on('startGame', (data) => {

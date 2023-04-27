@@ -6,7 +6,7 @@ export function renderGameBoard(gridDiv, currentUser){
     socket.on('paint', (playerData) => {
         //console.log(playerData);
         playerData.forEach((data) => {
-            console.log(data);
+            // console.log(data);
             //const player = data.player;
             const color = data.color;
             const position = data.position;

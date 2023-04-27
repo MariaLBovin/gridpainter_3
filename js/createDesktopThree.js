@@ -1,4 +1,4 @@
-import checkPercentage from "./checkpercentage.js";
+import checkPercentage from "./checkPercentage.js";
 import { renderGameBoard } from "./grid.js";
 //import cancel from "./gameButtons.js";
 //import { notisDiv } from "./gameButtons.js";
@@ -8,14 +8,11 @@ import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
 import { printUsers } from "./createChat.js";
-import fetchImage from './fetchImage.js';
 import { img1 } from "./fetchImage.js";
 
 
 // const facit = [1, 2, 3];
 // const input = [1, 2, 3];
-
-
 
 
 export default function createDesktopThree (data) {
@@ -185,13 +182,15 @@ export default function createDesktopThree (data) {
 
           // flatten the conclusion pic array into a one array with method concat
           const conclusionFlat = [].concat(...conclusionPic);
+          const similarityPercentage = checkPercentage(img1.grid, conclusionFlat);
+          console.log("percentage:", similarityPercentage);
 
-            const similarityPercentage = checkPercentage(img1, conclusionFlat);
-            console.log("percetage:", similarityPercentage);
-            
+          // add the player's percentage to the array
+          
           // create an object with the grid data and a name for the conclusion pic
           // const dbConclusionPic = {name: "flower", grid: conclusionFlat};
           // socket.emit("grid-data", dbConclusionPic);
+          
         });            
 
         socket.emit('joinGame', ({ data }));

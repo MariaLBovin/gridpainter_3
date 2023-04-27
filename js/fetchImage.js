@@ -5,8 +5,8 @@ export default async function fetchImage () {
 
     socket.on("image", (randomImage) => {
 
-        console.log(randomImage);
-
+        console.log("randomimage fetch", randomImage);
+        img1 = randomImage;
         //console.log(randomConclusion);
         //Update the grid with the new image
         const imgArray = randomImage.grid;
