@@ -1,4 +1,4 @@
-import { socket } from "./main";
+import { socket } from "./main.js";
 
 export function chatMsg(currentUser) {
     // console.log(currentUser);
