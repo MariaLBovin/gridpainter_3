@@ -138,6 +138,7 @@ export default function createDesktopThree (data) {
 
         resultBtn.addEventListener("click", () => {
           displaySolution(gridDiv);
+
         }); 
 
         socket.on('result', (similarityPercentage) => {
@@ -146,6 +147,7 @@ export default function createDesktopThree (data) {
           const resultDiv = document.createElement('div');
           resultDiv.innerHTML = `Grattis! Ni fick ${similarityPercentage}% rätt. Bra jobbat.`;
           gridDiv.append(resultDiv);
+
 
           resultBtn.style.display = "none";
           clearInterval(myInterval);
