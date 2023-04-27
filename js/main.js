@@ -1,7 +1,7 @@
 import createDesktopTwo from "./createDesktopTwo.js";
 //import updateUsers from "./getPlayer.js";
 
-export const socket = io('http://localhost:3000');
+export const socket = io('https://gridpainter-app-d34xq.ondigitalocean.app');
 const loginBtn = document.getElementById("loginBtn");
 const userName = document.getElementById('inputName');
 const alertMsg = document.getElementById('alert-msg');

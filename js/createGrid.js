@@ -24,8 +24,7 @@ export default function createGrid (imageDiv, ) {
     }
     imageDiv.appendChild(table);
 
-   socket.emit('image');
-
+   
     fetchImage();
 
 }

@@ -3,17 +3,13 @@ export let img1;
 
 export default async function fetchImage () {
 
+    socket.on("image", (randomImage) => {
 
-    // socket.emit("image", img1); 
-
-    
-    socket.on("image", (randomConclusion) => {
-
-        console.log(randomConclusion);
+        console.log(randomImage);
 
         //console.log(randomConclusion);
         //Update the grid with the new image
-        const imgArray = randomConclusion.grid;
+        const imgArray = randomImage.grid;
         
         imgArray.forEach((img) => {
           const color = img.style;
