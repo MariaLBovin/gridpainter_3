@@ -1,5 +1,4 @@
 import fetchImage from "./fetchImage.js";
-import { socket } from "./main.js";
 
 export default function createGrid (imageDiv, ) {
 
@@ -24,6 +23,7 @@ export default function createGrid (imageDiv, ) {
     }
     imageDiv.appendChild(table);
 
+   
     fetchImage();
 
 }

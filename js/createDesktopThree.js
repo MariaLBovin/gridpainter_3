@@ -1,12 +1,14 @@
 
 import { renderGameBoard } from "./grid.js";
-//import cancel from "./gameButtons.js";
-//import { notisDiv } from "./gameButtons.js";
 import { countDown } from "./setTimer.js";
 import { socket } from "./main.js";
 import { printChatMessage } from "./createChat.js";
 import { chatMsg } from "./createChat.js";
 import createGrid from "./createGrid.js";
+import { printUsers } from "./createChat.js";
+
+import displaySolution from "./createSolution.js";
+
 
 export default function createDesktopThree (data) {
     
@@ -84,14 +86,21 @@ export default function createDesktopThree (data) {
         footerDiv.classList.add('footer-div');
     
         const cancelBtn = document.createElement("button");
+        cancelBtn.id = "cancelBtn";
         cancelBtn.innerText = "Avbryt";
+
     
         const resultBtn = document.createElement("button");
         resultBtn.id = "resultBtn";
         resultBtn.innerText = "Se resultat";
     
     
-        // resultBtn.addEventListener("click", seeResult);
+        // resultBtn.addEventListener("click", async () => {
+        //   console.log("img1 HÄR:", img1);
+        //     const similarityPercentage = checkPercentage(img1, conclusionPic);
+        //     console.log(similarityPercentage);
+        //   });
+
         // cancelBtn.addEventListener("click", cancel);
         container.appendChild(mainDiv);
         mainDiv.append(playDiv, imageDiv, chatDiv);
@@ -102,7 +111,26 @@ export default function createDesktopThree (data) {
         footerDiv.append(resultBtn, cancelBtn);
 
   const chatMessages = document.querySelector('.chat-messages');
-            
+  function tillbakatillindex(){
+    window.location.href = "index.html";
+
+  }
+  cancelBtn.addEventListener("click", () => {
+    console.log("Avbryt");
+    socket.emit("cancelGame");
+    tillbakatillindex();
+  });
+  
+
+
+  socket.on("redirect", () => {
+    tillbakatillindex();
+  });
+
+
+
+
+
     socket.on('message', message => {
     printChatMessage(message);
     // console.log(message);
@@ -114,45 +142,27 @@ export default function createDesktopThree (data) {
     chatMsg(currentUser);
 
         renderGameBoard(gridDiv, currentUser);
+
+        
         createGrid(imageDiv);
 
 
 
         //FIXME: this is for making conclusion picture and save it db
         resultBtn.addEventListener("click", () => {
-          const gridContainer = document.querySelector(".grid");
-          const conclusionPic = [];
-
-          // loop through each row in the grid
-          for (let i = 0; i < gridContainer.rows.length; i++) {
-            const row = gridContainer.rows[i];
-            const rowArray = [];
-
-            // loop through each cell in the current row
-            for (let j = 0; j < row.cells.length; j++) {
-              const cell = row.cells[j];
-
-              // create an object to store the cell data
-              const cellObject = {
-                id: cell.id,
-                style: cell.style.backgroundColor,
-              };
-              
-              rowArray.push(cellObject);
-            }
-
-            // add the row array to the conclusion pic array
-            conclusionPic.push(rowArray);
-          }
-
-          // flatten the conclusion pic array into a one array with method concat
-          const conclusionFlat = [].concat(...conclusionPic);
-
-          // create an object with the grid data and a name for the conclusion pic
-          const dbConclusionPic = {name: "flower", grid: conclusionFlat};
-          socket.emit("grid-data", dbConclusionPic);
+          displaySolution(gridDiv);
+          
         });            
+
+        
+
+        socket.emit('joinGame', ({ data }));
+
+        socket.on('gameUsers', (data) => {
+          printUsers(data);
+        });
     }
-}
+  }
+
 
 
