@@ -24,8 +24,8 @@ export default function createDesktopTwo() {
     h3.innerText = "Spelets regler:";
 
     const textArticle = document.createElement("article");
-    textArticle.innerText = `När spelet börjar blir du tilldelad en färg (grön, gul, blå eller grön). Färgen kommer visas på nästa sida. 
-                    I början på spelet kommer en bild att visas i 10 sekunder och sedan försvinner bilden. Du och tillsammans med 3 andra spelar har i uppgift att rita av den tidigare visade bilden.
+    textArticle.innerText = `När spelet börjar blir du tilldelad en färg (grön, gul, blå eller grön). Din tilldelade färg visas på nästa sida. 
+                    Här får ni också en framslumpad bild som ni tillsammans med 3 andra spelar har i uppgift att rita av.
                     Tänk även på att rätt färg ska vara i rätt ruta.`;
     const p = document.createElement("p");
     p.innerHTML = "Lycka till!";
