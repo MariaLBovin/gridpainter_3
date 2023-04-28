@@ -3,6 +3,7 @@ import createDesktopTwo from "./createDesktopTwo.js";
 
 
 export const socket = io('https://gridpainter-app-d34xq.ondigitalocean.app');
+// export const socket = io('http://localhost:3000');
 const alertMsg = document.getElementById('alert-msg');
 
 export default function init  () {
